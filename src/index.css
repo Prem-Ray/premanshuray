@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* @import url('https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.1/css/boxicons.min.css'); */
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'); */
+
+*{
+  font-family:'Montserrat',sans-serif;
+}
+
+.portbox{
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+}
+
+body {
+    overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  background-color: #F4F6F8; /* Light gray background */
+  color: #333333; /* Dark text color */
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+#cloud:hover{
+  fill:#FF5733
+}
+
+img{
+  -webkit-user-select: none; /*Safari*/
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /*Standard syntax*/
+
+  -webkit-user-select: none; /*Safari*/
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
+
+  -webkit-user-drag: none; /* WebKit/Blink */
+  -moz-user-drag: none; /* Gecko */
+  -ms-user-drag: none; /* IE */
+  /* user-drag: none; Standard syntax */
+  /* pointer-events: none; Disable interaction */
+  
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #FF5733; /* Highlight link color */
+}
+
+button {
+  background-color: #3498DB;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980B9; /* Darker blue on hover */
+}
+
+
+.wave {
+    animation-name: wave-animation;   
+    animation-duration: 2.5s;      
+    animation-iteration-count: infinite;   
+    transform-origin: 70% 70%;       
+    display: inline-block;
+  }
+  
+  @keyframes wave-animation {
+      0% { transform: rotate( 0.0deg) }
+     10% { transform: rotate(14.0deg) }   
+     20% { transform: rotate(-8.0deg) }
+     30% { transform: rotate(14.0deg) }
+     40% { transform: rotate(-4.0deg) }
+     50% { transform: rotate(10.0deg) }
+     60% { transform: rotate( 0.0deg) }   
+    100% { transform: rotate( 0.0deg) }
+  }
+
+
+section {
+  width:100vw ;
+
+  /* padding: 4rem 2rem; */
+}
+
+
+
+#contact {
+  background-color: #2C3E50; /* Dark background for the contact section */
+  color: white;
+}
+
+footer {
+  background-color: #2C3E50; /* Dark blue footer */
+  color: white;
+  padding: 2rem 0;
+}
+
+/* Navbar background color */
+nav {
+  background-color: #2C3E50;
+}
+
+nav a {
+  color: white;
+}
+
+nav a:hover {
+  color: #FF5733; /* Hover color for nav links */
+}
