@@ -31,7 +31,7 @@ const About = () => {
         </p>
         <div className="mt-6 flex justify-center lg:justify-start">
           <a 
-            href="https://drive.google.com/file/d/1didQ8NJxIigKw3NuxNmo20JSJ9isnrWM/view?usp=sharing" 
+            href="https://drive.google.com/file/d/17A7vmwt1V_hSaVXUz6fZfCeB2KxmaNLg/" 
             target="_blank" 
             rel="noopener noreferrer"
           >
