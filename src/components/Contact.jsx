@@ -1,6 +1,10 @@
 import React from 'react';
 
 function Contact() {
+
+  function onSub(e){
+    e.preventDefault();
+  }
   return (
     <section
       id="contact"
@@ -14,7 +18,7 @@ function Contact() {
         </h2>
         <div className="flex flex-col justify-center items-center">
           <div className="w-full md:w-2/3 lg:w-1/2 xl:w-1/3 px-4 mb-8">
-            <form action="#">
+            <form onSubmit={formSub} action="#">
               <div className="flex flex-col sm:flex-row sm:space-x-4 mb-4">
                 <input
                   type="text"
