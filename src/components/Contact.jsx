@@ -2,7 +2,7 @@ import React from 'react';
 
 function Contact() {
 
-  function onSub(e){
+  function formSub(e){
     e.preventDefault();
   }
   return (
