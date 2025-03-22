@@ -10,7 +10,7 @@ Welcome to my personal **portfolio website**, where I showcase my **skills, proj
 
 ## 🚀 Features  
 ✔️ **Responsive Design** – Works seamlessly on all devices.  
-✔️ **Projects Showcase** – Displays my projects with descriptions and links.  
+✔️ **Projects Showcase** – Displays my projects with descriptions and links .  
 ✔️ **Skills & Experience** – Highlights my technical skills and professional journey.  
 ✔️ **Contact Form** – Allows visitors to reach out to me directly.  
 ✔️ **Modern UI/UX** – Built with a sleek and minimalistic design using **Tailwind CSS**.  
