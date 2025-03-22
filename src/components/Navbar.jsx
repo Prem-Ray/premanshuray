@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa'; // Optional: for hamburger icon
 
+
 const Navbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
@@ -37,6 +38,7 @@ const Navbar = (props) => {
                         <input type="text" placeholder="Search..." className="border rounded-md py-2 px-4 pl-12 focus:outline-none focus:ring-2 focus:ring-blue-500 h-[32px]"/>
                         <span className="absolute left-3 top-1 text-gray-500">🔍</span>
                     </div> : " "} */}
+                    
                 </div>
                 <div className="md:hidden">
                     <button onClick={toggleMenu} className="text-white">
