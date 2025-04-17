@@ -3,6 +3,12 @@ import React from 'react';
 function Projects() {
   const projectData = [
     {
+      title: " Smart & Early Abnormality Diagnosis System",
+      description: "Developing an IoT-based health monitoring system for real-time SpO₂, heart rate, BMI, and ECG tracking and also booking appointment for Doctor.",
+      link: "https://ecegroup2.github.io/", 
+      github: "https://github.com/ecegroup2/ecegroup2.github.io"
+    },
+    {
       title: "🌐 FindGit",
       description: "Explore GitHub profiles effortlessly. View detailed information about repositories, followers, and more.",
       link: "https://findgitcoder.netlify.app/",
@@ -15,39 +21,33 @@ function Projects() {
       github: "https://github.com/Prem-Ray/Password-Generator"
     },
     {
-      title: "Rural Area Health Monitoring System",
-      description: "A remote solution for tracking patients' vital signs in rural regions.",
-      link: "https://github.com/ecegroup2/frontend", // You can add a live demo link if available
-      github: "https://github.com/Prem-Ray/frontend"
-    },
-    {
       title: "🌍 Select Your Trip ✈️",
       description: "A dynamic travel website using React and Tailwind CSS, enabling users to explore various destinations with key details such as name, price, and description.",
-      link: "https://select-your-trip.netlify.app/", // You can add a live demo link if available
+      link: "https://select-your-trip.netlify.app/", 
       github: "https://github.com/Prem-Ray/Select-Your-Trip"
     },
     {
       title: "Text to Speech Generator",
       description: "A simple yet powerful Text-to-Speech Converter using SpeechSynthesisUtterance() API. It’s designed to turn your written words into spoken speech with just a click.",
-      link: "https://texttospeechgenerator.netlify.app/", // You can add a live demo link if available
+      link: "https://texttospeechgenerator.netlify.app/", 
       github: "https://github.com/Prem-Ray/texttospeechgenerator"
     },
     {
       title: "Dynamic Weather Application 🌤️",
       description: "A Weather Application designed to make accessing real-time weather information intuitive, reliable, and effortless. 🌍✨",
-      link: "https://searchanyweather.netlify.app/", // You can add a live demo link if available
+      link: "https://searchanyweather.netlify.app/", 
       github: "https://github.com/Prem-Ray/weatherapplication"
     },
     {
       title: "Quiz Application 🌟",
       description: "The application dynamically displays questions, evaluates responses in real-time, and showcases scores at the end of the quiz. Whether you're testing knowledge or just having fun, this quiz app offers a smooth and intuitive interface!",
-      link: "https://kheloquiz.netlify.app/", // You can add a live demo link if available
+      link: "https://kheloquiz.netlify.app/",
       github: "https://github.com/Prem-Ray/quizapplication"
     },
     {
       title: "🎮 Tic-Tac-Toe Game with Built-In Stopwatch 🕒",
       description: "A responsive Tic-Tac-Toe game designed with HTML, CSS, and JavaScript featuring a dynamic stopwatch, seamless gameplay, and engaging UX/UI.",
-      link: "https://tictactoe-game-in2025.netlify.app/", // You can add a live demo link if available
+      link: "https://tictactoe-game-in2025.netlify.app/", 
       github: "https://github.com/Prem-Ray/tictactoegame/tree/main"
     }
   ];
