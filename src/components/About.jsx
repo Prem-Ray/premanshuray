@@ -1,5 +1,4 @@
 import React from 'react';
-import resume from './public/PREMANSHU_RAY_RESUME.pdf' ;
 
 const About = () => {
   return (
@@ -32,7 +31,7 @@ const About = () => {
         </p>
         <div className="mt-6 flex justify-center lg:justify-start">
           <a 
-            href="{resume}" 
+            href="/PREMANSHU_RAY_RESUME.pdf" 
             download="Premanshu_Resume.pdf"
             target="_blank" 
             rel="noopener noreferrer"
