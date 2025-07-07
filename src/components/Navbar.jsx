@@ -68,7 +68,7 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white text-2xl focus:outline-none"
+              className="text-white text-sm font-bold rounded-full focus:outline-none"
               aria-label="Toggle Menu"
             >
               ☰
