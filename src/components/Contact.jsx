@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Mail } from 'lucide-react';
+import { MapPin, Mail, X, CheckCircle, AlertCircle, Info } from 'lucide-react';
 
 function Contact() {
   const [matrixChars, setMatrixChars] = useState([]);
   const [glitchActive, setGlitchActive] = useState(false);
+  const [toasts, setToasts] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    profession: '',
+    subject: '',
     message: ''
   });
 
@@ -39,21 +40,36 @@ function Contact() {
     return () => clearInterval(interval);
   }, []);
 
-  function getWhatsappMessage(formData) {
-    return `🚀 *NEW CONTACT FORM SUBMISSION* 🚀
+  // Toast notification system
+  const showToast = (message, type = 'info') => {
+    const id = Date.now();
+    const newToast = { id, message, type };
+    setToasts(prev => [...prev, newToast]);
+    
+    // Auto remove toast after 5 seconds
+    setTimeout(() => {
+      setToasts(prev => prev.filter(toast => toast.id !== id));
+    }, 5000);
+  };
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-👤 *Name:* ${formData.name}
-📧 *Email:* ${formData.email}
-📱 *Phone:* ${formData.phone}
-📝 *Profession:* ${formData.profession}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  const removeToast = (id) => {
+    setToasts(prev => prev.filter(toast => toast.id !== id));
+  };
 
-💬 *Message:*
+  function getEmailBody(formData) {
+    return `Hello,
+
+I'm reaching out to you through your contact form. Here are my details:
+
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+
+Message:
 ${formData.message}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⏰ Sent: ${new Date().toLocaleString()}`;
+Best regards,
+${formData.name}`;
   }
 
   const handleInputChange = (e) => {
@@ -66,29 +82,52 @@ ${formData.message}
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.phone || !formData.profession || !formData.message) {
-      alert('⚠️ All fields are required!');
+    if (!formData.name || !formData.email || !formData.phone || !formData.subject || !formData.message) {
+      showToast('⚠️ All fields are required!', 'error');
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      showToast('Please enter a valid email address', 'error');
+      return;
+    }
+
+    // Phone validation (basic)
+    const phoneRegex = /^[\+]?[1-9][\d]{3,14}$/;
+    if (!phoneRegex.test(formData.phone.replace(/\s+/g, ''))) {
+      showToast('Please enter a valid phone number', 'error');
       return;
     }
 
     setGlitchActive(true);
     setTimeout(() => setGlitchActive(false), 500);
 
-    const whatsappNumber = '917047466142';
-    const whatsappMessage = getWhatsappMessage(formData);
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    const recipientEmail = 'premanshuray981@gmail.com';
+    const emailSubject = formData.subject;
+    const emailBody = getEmailBody(formData);
+    
+    // Create Gmail compose URL
+    const gmailURL = `https://mail.google.com/mail/?view=cm&to=${recipientEmail}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
-    window.open(whatsappURL, '_blank');
-
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        profession: '',
-        message: ''
-      });
-    }, 1000);
+    try {
+      window.open(gmailURL, '_blank');
+      showToast('Gmail opened successfully! Please send your email.', 'success');
+      
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+        showToast('Form cleared successfully', 'info');
+      }, 1000);
+    } catch (error) {
+      showToast('Failed to open Gmail. Please try again.', 'error');
+    }
   };
 
   const glitchKeyframes = `
@@ -99,11 +138,98 @@ ${formData.message}
       60% { transform: translate(2px, 2px); }
       80% { transform: translate(2px, -2px); }
     }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      @keyframes slideIn {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+    
+    @keyframes slideOut {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
   `;
+
+  const getToastIcon = (type) => {
+    switch (type) {
+      case 'success':
+        return <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-400" />;
+      case 'error':
+        return <AlertCircle className="w-4 h-4 md:w-5 md:h-5 text-red-400" />;
+      case 'info':
+      default:
+        return <Info className="w-4 h-4 md:w-5 md:h-5 text-blue-400" />;
+    }
+  };
+
+  const getToastStyles = (type) => {
+    switch (type) {
+      case 'success':
+        return 'border-green-500 bg-green-900 bg-opacity-90';
+      case 'error':
+        return 'border-red-500 bg-red-900 bg-opacity-90';
+      case 'info':
+      default:
+        return 'border-blue-500 bg-blue-900 bg-opacity-90';
+    }
+  };
 
   return (
     <div className="min-h-screen pt-16 md:pt-8 bg-black relative overflow-hidden">
       <style>{glitchKeyframes}</style>
+      
+      {/* Toast Container */}
+      <div className="fixed top-4 right-4 left-4 md:left-auto z-50 space-y-2">
+        {toasts.map((toast) => (
+          <div
+            key={toast.id}
+            className={`flex items-start gap-2 md:gap-3 p-3 md:p-4 rounded-lg border backdrop-blur-sm font-mono text-xs md:text-sm w-full md:min-w-80 md:max-w-96 ${getToastStyles(toast.type)}`}
+            style={{
+              animation: 'slideIn 0.3s ease-out'
+            }}
+          >
+            <div className="flex-shrink-0 mt-0.5">
+              {getToastIcon(toast.type)}
+            </div>
+            <span className="text-white flex-1 leading-relaxed break-words">{toast.message}</span>
+            <button
+              onClick={() => removeToast(toast.id)}
+              className="text-gray-400 hover:text-white transition-all duration-300 flex-shrink-0 mt-0.5 p-1 rounded-full hover:bg-white hover:bg-opacity-20 backdrop-blur-sm border border-transparent hover:border-white hover:border-opacity-30"
+              style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(10px)'
+              }}
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        ))}
+      </div>
       
       {/* Matrix Rain Background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -181,7 +307,7 @@ ${formData.message}
                       <input
                         name="phone"
                         type="tel"
-                        placeholder="MOBILE_NUMBER*"
+                        placeholder="PHONE_NUMBER*"
                         value={formData.phone}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 bg-transparent border border-cyan-500 border-opacity-50 rounded text-cyan-400 placeholder-cyan-400 placeholder-opacity-50 font-mono focus:border-cyan-400 focus:outline-none transition-all duration-300"
@@ -191,10 +317,10 @@ ${formData.message}
                     </div>
                     <div>
                       <input
-                        name="profession"
+                        name="subject"
                         type="text"
-                        placeholder="Profession*"
-                        value={formData.profession}
+                        placeholder="EMAIL_SUBJECT*"
+                        value={formData.subject}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 bg-transparent border border-cyan-500 border-opacity-50 rounded text-cyan-400 placeholder-cyan-400 placeholder-opacity-50 font-mono focus:border-cyan-400 focus:outline-none transition-all duration-300"
                         onFocus={(e) => e.target.style.boxShadow = '0 0 10px rgba(34, 211, 238, 0.3)'}
@@ -219,15 +345,46 @@ ${formData.message}
                   <button
                     type="button"
                     onClick={handleSubmit}
-                    className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-pink-500 hover:to-purple-500 text-black font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 font-mono text-lg"
+                    className="relative w-full overflow-hidden group border-2 border-cyan-400 bg-transparent text-white font-bold py-4 px-8 rounded-lg transition-all duration-500 transform hover:scale-105 font-mono text-lg"
                     style={{
-                      boxShadow: glitchActive ? '0 0 20px rgba(34, 211, 238, 0.5)' : 'none',
-                      animation: glitchActive ? 'glitch 0.5s linear' : 'none'
+                      background: 'linear-gradient(45deg, rgba(34, 211, 238, 0.1), rgba(236, 72, 153, 0.1))',
+                      animation: glitchActive ? 'glitch 0.5s linear, borderGlow 2s infinite' : 'borderGlow 3s infinite',
+                      boxShadow: '0 0 20px rgba(34, 211, 238, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.1)'
                     }}
-                    onMouseEnter={(e) => e.target.style.boxShadow = '0 0 20px rgba(34, 211, 238, 0.5)'}
-                    onMouseLeave={(e) => e.target.style.boxShadow = glitchActive ? '0 0 20px rgba(34, 211, 238, 0.5)' : 'none'}
+                    onMouseEnter={(e) => {
+                      e.target.style.animation = 'neonPulse 1s infinite, borderGlow 2s infinite';
+                      e.target.style.background = 'linear-gradient(45deg, rgba(34, 211, 238, 0.2), rgba(236, 72, 153, 0.2))';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.animation = glitchActive ? 'glitch 0.5s linear, borderGlow 2s infinite' : 'borderGlow 3s infinite';
+                      e.target.style.background = 'linear-gradient(45deg, rgba(34, 211, 238, 0.1), rgba(236, 72, 153, 0.1))';
+                    }}
                   >
-                    SEND_TO_WHATSAPP 📱
+                    {/* Animated background overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-pink-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                    
+                    {/* Shine effect */}
+                    <div 
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-500"
+                      style={{
+                        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
+                        animation: 'textShine 2s infinite'
+                      }}
+                    ></div>
+                    
+                    {/* Button content */}
+                    <div className="relative z-10 flex items-center justify-center gap-2">
+                      <span className="bg-gradient-to-r from-cyan-300 to-pink-300 bg-clip-text text-transparent font-black tracking-wider">
+                        SEND VIA GMAIL
+                      </span>
+                      <span className="text-2xl animate-pulse">📧</span>
+                    </div>
+                    
+                    {/* Corner accents */}
+                    <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-400 opacity-60"></div>
+                    <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-pink-400 opacity-60"></div>
+                    <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-pink-400 opacity-60"></div>
+                    <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-400 opacity-60"></div>
                   </button>
                 </div>
               </div>
@@ -256,7 +413,7 @@ ${formData.message}
                 </div>
                 <div className="text-cyan-400 font-mono text-sm space-y-2">
                   <p>+91 7047466142</p>
-                  <p>premanshuray981@gmail.com</p>
+                  <a href="mailto:premanshuray981@gmail.com">premanshuray981@gmail.com</a>
                 </div>
               </div>
 
