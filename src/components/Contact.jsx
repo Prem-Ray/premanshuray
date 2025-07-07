@@ -150,6 +150,22 @@ ${formData.name}`;
       }
     }
     
+    @keyframes borderGlow {
+      0%, 100% { 
+        border-color: rgba(34, 211, 238, 0.8);
+        box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+      }
+      50% { 
+        border-color: rgba(236, 72, 153, 0.8);
+        box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+      }
+    }
+    
+    @keyframes textShine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
     @media (max-width: 768px) {
       @keyframes slideIn {
         from {
@@ -345,46 +361,27 @@ ${formData.name}`;
                   <button
                     type="button"
                     onClick={handleSubmit}
-                    className="relative w-full overflow-hidden group border-2 border-cyan-400 bg-transparent text-white font-bold py-4 px-8 rounded-lg transition-all duration-500 transform hover:scale-105 font-mono text-lg"
+                    className="relative w-full overflow-hidden group border-2 border-cyan-400 bg-gray-900 bg-opacity-20 text-white font-bold py-3 md:py-4 px-4 md:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 font-mono text-base md:text-lg"
                     style={{
-                      background: 'linear-gradient(45deg, rgba(34, 211, 238, 0.1), rgba(236, 72, 153, 0.1))',
-                      animation: glitchActive ? 'glitch 0.5s linear, borderGlow 2s infinite' : 'borderGlow 3s infinite',
-                      boxShadow: '0 0 20px rgba(34, 211, 238, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.1)'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.animation = 'neonPulse 1s infinite, borderGlow 2s infinite';
-                      e.target.style.background = 'linear-gradient(45deg, rgba(34, 211, 238, 0.2), rgba(236, 72, 153, 0.2))';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.animation = glitchActive ? 'glitch 0.5s linear, borderGlow 2s infinite' : 'borderGlow 3s infinite';
-                      e.target.style.background = 'linear-gradient(45deg, rgba(34, 211, 238, 0.1), rgba(236, 72, 153, 0.1))';
+                      animation: glitchActive ? 'glitch 0.5s linear' : 'borderGlow 3s infinite'
                     }}
                   >
                     {/* Animated background overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-pink-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                    
-                    {/* Shine effect */}
-                    <div 
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-500"
-                      style={{
-                        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
-                        animation: 'textShine 2s infinite'
-                      }}
-                    ></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-pink-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                     
                     {/* Button content */}
                     <div className="relative z-10 flex items-center justify-center gap-2">
-                      <span className="bg-gradient-to-r from-cyan-300 to-pink-300 bg-clip-text text-transparent font-black tracking-wider">
+                      <span className="text-cyan-300 font-black tracking-wider text-sm md:text-base">
                         SEND VIA GMAIL
                       </span>
-                      <span className="text-2xl animate-pulse">📧</span>
+                      <span className="text-xl md:text-2xl animate-pulse">📧</span>
                     </div>
                     
                     {/* Corner accents */}
-                    <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-400 opacity-60"></div>
-                    <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-pink-400 opacity-60"></div>
-                    <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-pink-400 opacity-60"></div>
-                    <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-400 opacity-60"></div>
+                    <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400 opacity-60"></div>
+                    <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-pink-400 opacity-60"></div>
+                    <div className="absolute bottom-0 left-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-l-2 border-pink-400 opacity-60"></div>
+                    <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 border-b-2 border-r-2 border-cyan-400 opacity-60"></div>
                   </button>
                 </div>
               </div>
