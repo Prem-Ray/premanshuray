@@ -229,28 +229,53 @@ const Home = () => {
           <div className="order-1 lg:order-2 z-10 slide-in-up lg:slide-in-right">
             <FloatingElement delay={0.8}>
               <div className="relative group">
-                {/* Holographic border */}
-                <div className="absolute inset-0 hologram-bg rounded-full p-1 animate-pulse">
-                  <div className="w-full h-full rounded-full bg-black"></div>
+                {/* Hexagonal background with gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-cyan-500/20 to-pink-500/20 rounded-2xl transform rotate-12 blur-sm"></div>
+                <div className="absolute inset-2 bg-gradient-to-tl from-blue-500/10 via-purple-500/10 to-cyan-500/10 rounded-xl transform -rotate-6"></div>
+                
+                {/* Main container with glassmorphism */}
+                <div className="relative bg-black/40 backdrop-blur-lg border border-cyan-400/30 rounded-xl p-6 shadow-2xl">
+                  {/* Profile image */}
+                  <img 
+                    src="/premanshuray.jpg" 
+                    alt="Premanshu Ray" 
+                    className="relative z-10 select-none rounded-xl border-2 border-cyan-400/50 shadow-xl w-32 h-32 sm:w-36 sm:h-36 md:w-48 md:h-48 lg:w-56 lg:h-56 object-cover hover:border-cyan-400 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/40 mx-auto"
+                    style={{ 
+                      animation: 'float 3s ease-in-out infinite',
+                      filter: 'brightness(1) contrast(1) saturate(1)'
+                    }}
+                  />
+                  
+                  {/* Geometric decoration lines */}
+                  <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-cyan-400/60 rounded-tl-lg"></div>
+                  <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-purple-400/60 rounded-tr-lg"></div>
+                  <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-pink-400/60 rounded-bl-lg"></div>
+                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-blue-400/60 rounded-br-lg"></div>
+                  
+                  {/* Moving particles */}
+                  <div className="absolute inset-0 overflow-hidden rounded-xl">
+                    <div className="absolute w-2 h-2 bg-cyan-400/60 rounded-full animate-ping" style={{ top: '20%', left: '10%', animationDelay: '0s' }}></div>
+                    <div className="absolute w-1 h-1 bg-purple-400/60 rounded-full animate-ping" style={{ top: '60%', right: '15%', animationDelay: '1s' }}></div>
+                    <div className="absolute w-1.5 h-1.5 bg-pink-400/60 rounded-full animate-ping" style={{ bottom: '30%', left: '20%', animationDelay: '2s' }}></div>
+                  </div>
+                  
+                  {/* Tech stack icons with modern positioning */}
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-sm border border-cyan-400/40 rounded-full px-3 py-1 text-sm">
+                    💻 <span className="text-cyan-400 font-mono">Dev</span>
+                  </div>
+                  <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-sm border border-purple-400/40 rounded-full px-3 py-1 text-sm">
+                    🚀 <span className="text-purple-400 font-mono">Tech</span>
+                  </div>
+                  <div className="absolute top-1/2 -left-3 transform -translate-y-1/2 bg-black/80 backdrop-blur-sm border border-pink-400/40 rounded-full px-2 py-1 text-sm">
+                    ⚡
+                  </div>
+                  <div className="absolute top-1/2 -right-3 transform -translate-y-1/2 bg-black/80 backdrop-blur-sm border border-blue-400/40 rounded-full px-2 py-1 text-sm">
+                    🔥
+                  </div>
                 </div>
                 
-                {/* Profile image */}
-               <img
-                  src="/premanshuray.jpg"
-                  alt="Premanshu Ray"
-                  className="relative z-10 select-none rounded-full border-4 border-transparent shadow-2xl w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 object-cover hover:grayscale-0 transition-all duration-500 transform hover:scale-105"
-                  style={{ animation: 'glow 3s ease-in-out infinite' }}
-                />
-                
-                {/* Rotating rings */}
-                <div className="absolute inset-0 border-2 border-cyan-400 rounded-full animate-spin opacity-30" style={{ animation: 'spin 10s linear infinite' }}></div>
-                <div className="absolute inset-2 border-2 border-pink-400 rounded-full animate-spin opacity-30" style={{ animation: 'spin 8s linear infinite reverse' }}></div>
-                
-                {/* Floating tech icons - responsive positioning */}
-                <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 text-lg sm:text-xl md:text-2xl animate-bounce">💻</div>
-                <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 text-lg sm:text-xl md:text-2xl animate-bounce" style={{ animationDelay: '0.5s' }}>⚡</div>
-                <div className="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 text-lg sm:text-xl md:text-2xl animate-bounce" style={{ animationDelay: '1s' }}>🔥</div>
-                <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 text-lg sm:text-xl md:text-2xl animate-bounce" style={{ animationDelay: '1.5s' }}>🚀</div>
+                {/* Outer glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-xl blur-xl transform scale-110 opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
               </div>
             </FloatingElement>
           </div>
