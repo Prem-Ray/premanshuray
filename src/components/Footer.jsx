@@ -17,19 +17,11 @@ function FloatingContacts() {
   const contacts = [
     {
       id: 'emergency',
-      icon: '🚨',
-      label: 'Emergency Contact',
-      href: 'tel:+917047466142',
-      color: 'bg-red-500 hover:bg-red-600 shadow-red-500/50',
-      delay: 'delay-100'
-    },
-    {
-      id: 'call',
       icon: '📞',
       label: 'Call Now',
       href: 'tel:+917047466142',
       color: 'bg-green-500 hover:bg-green-600 shadow-green-500/50',
-      delay: 'delay-200'
+      delay: 'delay-100'
     },
     {
       id: 'whatsapp',
