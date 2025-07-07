@@ -201,18 +201,21 @@ const Home = () => {
           {matrixChars.map((char, index) => (
             <div
               key={index}
-              className="absolute text-green-400 text-xs font-mono"
+              className="absolute text-green-400 text-[10px] font-mono"
               style={{
                 left: `${char.x}%`,
                 top: `${char.y}%`,
                 opacity: char.opacity,
-                animation: `matrix 3s linear infinite`
+                animation: `matrix 8s linear infinite`,
+                transform: `scale(0.85)`, 
+                filter: 'blur(2px)', 
               }}
             >
               {char.char}
             </div>
           ))}
         </div>
+
 
         {/* Cyber Grid Overlay */}
         <div className="absolute inset-0 opacity-5 sm:opacity-10 pointer-events-none">
