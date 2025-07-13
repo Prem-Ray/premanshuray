@@ -88,11 +88,11 @@ function Projects() {
   ];
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setLoadingProgress(prev => (prev < 100 ? prev + 1.5 : prev));
-    }, 80);
-    return () => clearInterval(timer);
-  }, []);
+  const timer = setInterval(() => {
+    setLoadingProgress(prev => Math.min(prev + 1.5, 100));
+  }, 80);
+  return () => clearInterval(timer);
+}, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
