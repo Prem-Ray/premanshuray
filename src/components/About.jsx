@@ -338,7 +338,7 @@ const About = () => {
               {/* Profile Section */}
               <div className="relative inline-block animate-float">
                 <img
-                  src="/premray.jpg"
+                  src="/premam.jpg"
                   alt="Premanshu Ray"
                   className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-56 lg:h-56 xl:w-64 xl:h-64 2xl:w-72 2xl:h-72 rounded-full object-cover shadow-lg"
                 />
