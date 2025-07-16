@@ -20,7 +20,7 @@ function Projects() {
       description: "Explore GitHub profiles effortlessly. View detailed information about repositories, followers, and more.",
       link: "https://findgitcoder.netlify.app/",
       github: "https://github.com/Prem-Ray/FindGit",
-      tech: ["React", "GitHub API", "CSS"],
+      tech: ["JavaScript" , "HTML","Tailwind CSS","GitHub API"],
       color: "from-purple-400 to-violet-400",
       icon: "🔍",
       image: "/git.png"
@@ -30,7 +30,7 @@ function Projects() {
       description: "The application dynamically displays questions, evaluates responses in real-time, and showcases scores at the end of the quiz.",
       link: "https://kheloquiz.netlify.app/",
       github: "https://github.com/Prem-Ray/quizapplication",
-      tech: ["JavaScript", "HTML", "CSS"],
+      tech: ["JavaScript", "HTML", "Tailwind CSS"],
       color: "from-indigo-400 to-purple-400",
       icon: "❓",
       image: "/quiz.png"
