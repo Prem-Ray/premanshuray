@@ -1,78 +1,78 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function Skills() {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [visibleSkills, setVisibleSkills] = useState(0);
 
   const skills = [
-    { 
-      name: "C++", 
-      level: 85, 
-      color: "from-blue-400 to-cyan-400", 
+    {
+      name: "C++",
+      level: 85,
+      color: "from-blue-400 to-cyan-400",
       icon: "💻",
-      description: "System Programming & DSA"
+      description: "System Programming & DSA",
     },
-    { 
-      name: "JavaScript", 
-      level: 90, 
-      color: "from-yellow-400 to-orange-400", 
+    {
+      name: "JavaScript",
+      level: 90,
+      color: "from-yellow-400 to-orange-400",
       icon: "⚡",
-      description: "Modern ES6+ & DOM Manipulation"
+      description: "Modern ES6+ & DOM Manipulation",
     },
-    { 
-      name: "React", 
-      level: 88, 
-      color: "from-cyan-400 to-blue-400", 
+    {
+      name: "React",
+      level: 88,
+      color: "from-cyan-400 to-blue-400",
       icon: "⚛️",
-      description: "Hooks, Context & Component Design"
+      description: "Hooks, Context & Component Design",
     },
-    { 
-      name: "HTML & CSS", 
-      level: 92, 
-      color: "from-pink-400 to-purple-400", 
+    {
+      name: "HTML & CSS",
+      level: 92,
+      color: "from-pink-400 to-purple-400",
       icon: "🎨",
-      description: "Responsive Design & Animations"
+      description: "Responsive Design & Animations",
     },
-    { 
-      name: "Tailwind CSS", 
-      level: 87, 
-      color: "from-purple-400 to-indigo-400", 
+    {
+      name: "Tailwind CSS",
+      level: 87,
+      color: "from-purple-400 to-indigo-400",
       icon: "🌈",
-      description: "Utility-First CSS Framework"
+      description: "Utility-First CSS Framework",
     },
-    { 
-      name: "OOPs", 
-      level: 84, 
-      color: "from-emerald-400 to-teal-400", 
+    {
+      name: "OOPs",
+      level: 84,
+      color: "from-emerald-400 to-teal-400",
       icon: "🏗️",
-      description: "Object-Oriented Programming Concepts"
+      description: "Object-Oriented Programming Concepts",
     },
-    { 
-      name: "SQL", 
-      level: 82, 
-      color: "from-red-400 to-pink-400", 
+    {
+      name: "SQL",
+      level: 82,
+      color: "from-red-400 to-pink-400",
       icon: "🗄️",
-      description: "Database Design & Queries"
+      description: "Database Design & Queries",
     },
-    { 
-      name: "Computer Network", 
-      level: 78, 
-      color: "from-green-400 to-teal-400", 
+    {
+      name: "Computer Network",
+      level: 78,
+      color: "from-green-400 to-teal-400",
       icon: "🌐",
-      description: "TCP/IP, Protocols & Network Security"
+      description: "TCP/IP, Protocols & Network Security",
     },
-    { 
-      name: "Prompt Engineering", 
-      level: 89, 
-      color: "from-violet-400 to-purple-400", 
+    {
+      name: "Prompt Engineering",
+      level: 89,
+      color: "from-violet-400 to-purple-400",
       icon: "🤖",
-      description: "AI Model Optimization & Fine-tuning"
-    }
+      description: "AI Model Optimization & Fine-tuning",
+    },
   ];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setLoadingProgress(prev => {
+      setLoadingProgress((prev) => {
         if (prev < 100) return prev + 2;
         return prev;
       });
@@ -83,7 +83,7 @@ function Skills() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setVisibleSkills(prev => {
+      setVisibleSkills((prev) => {
         if (prev < skills.length) return prev + 1;
         return prev;
       });
@@ -93,7 +93,9 @@ function Skills() {
   }, [skills.length]);
 
   const CodeBlock = ({ children, className = "" }) => (
-    <div className={`bg-gray-900/90 backdrop-blur-sm rounded-lg p-4 font-mono text-sm border border-cyan-400/30 ${className}`}>
+    <div
+      className={`bg-gray-900/90 backdrop-blur-sm rounded-lg p-4 font-mono text-sm border border-cyan-400/30 ${className}`}
+    >
       <div className="flex items-center gap-2 mb-3">
         <div className="w-3 h-3 bg-red-500 rounded-full"></div>
         <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
@@ -105,13 +107,13 @@ function Skills() {
   );
 
   return (
-    <section 
-      id="skills" 
+    <section
+      id="skills"
       className="min-h-screen bg-black relative overflow-hidden py-20"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-cyan-900/20"></div>
-      
+
       {/* Matrix-like particles */}
       <div className="absolute inset-0 opacity-20">
         {Array.from({ length: 60 }).map((_, i) => (
@@ -122,7 +124,7 @@ function Skills() {
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 2}s`,
-              animationDuration: `${2 + Math.random() * 3}s`
+              animationDuration: `${2 + Math.random() * 3}s`,
             }}
           />
         ))}
@@ -141,13 +143,26 @@ function Skills() {
         <div className="text-center mb-16">
           <CodeBlock className="max-w-3xl mx-auto mb-8">
             <div className="text-cyan-400">
-              <span className="text-gray-500">1</span> <span className="text-purple-400">import</span> <span className="text-cyan-400">*</span> <span className="text-purple-400">as</span> <span className="text-blue-400">Skills</span> <span className="text-purple-400">from</span> <span className="text-green-400">'./premanshu-skills'</span>;
+              <span className="text-gray-500">1</span>{" "}
+              <span className="text-purple-400">import</span>{" "}
+              <span className="text-cyan-400">*</span>{" "}
+              <span className="text-purple-400">as</span>{" "}
+              <span className="text-blue-400">Skills</span>{" "}
+              <span className="text-purple-400">from</span>{" "}
+              <span className="text-green-400">'./premanshu-skills'</span>;
             </div>
             <div className="text-cyan-400">
-              <span className="text-gray-500">2</span> <span className="text-purple-400">const</span> <span className="text-blue-400">developer</span> = <span className="text-purple-400">new</span> <span className="text-cyan-400">FullStackDeveloper</span>();
+              <span className="text-gray-500">2</span>{" "}
+              <span className="text-purple-400">const</span>{" "}
+              <span className="text-blue-400">developer</span> ={" "}
+              <span className="text-purple-400">new</span>{" "}
+              <span className="text-cyan-400">FullStackDeveloper</span>();
             </div>
             <div className="text-cyan-400">
-              <span className="text-gray-500">3</span> <span className="text-blue-400">developer</span>.<span className="text-cyan-400">loadSkills</span>().then(<span className="text-green-400">success</span>);
+              <span className="text-gray-500">3</span>{" "}
+              <span className="text-blue-400">developer</span>.
+              <span className="text-cyan-400">loadSkills</span>().then(
+              <span className="text-green-400">success</span>);
             </div>
           </CodeBlock>
 
@@ -163,7 +178,7 @@ function Skills() {
               <span>{loadingProgress}%</span>
             </div>
             <div className="w-full bg-gray-700 rounded-full h-2">
-              <div 
+              <div
                 className="bg-gradient-to-r from-cyan-400 to-purple-400 h-2 rounded-full transition-all duration-300"
                 style={{ width: `${loadingProgress}%` }}
               ></div>
@@ -177,20 +192,25 @@ function Skills() {
             <div
               key={index}
               className={`skill-card w-full max-w-sm mx-auto transform transition-all duration-500 ${
-                index < visibleSkills ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                index < visibleSkills
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-10 opacity-0"
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="group relative">
-                <div className={`absolute -inset-1 bg-gradient-to-r ${skill.color} rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse`}></div>
+                <div
+                  className={`absolute -inset-1 bg-gradient-to-r ${skill.color} rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse`}
+                ></div>
                 <div className="relative bg-gray-900/90 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-cyan-400/30 hover:border-cyan-400 transition-all duration-300 transform hover:scale-105 h-full flex flex-col justify-between min-h-[320px]">
-                  
                   {/* Terminal Header */}
                   <div className="flex items-center gap-1 sm:gap-2 mb-3 sm:mb-4">
                     <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-red-500 rounded-full"></div>
                     <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-500 rounded-full"></div>
                     <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-cyan-400 text-xs font-mono ml-1 sm:ml-2 truncate">{skill.name.toLowerCase().replace(/\s+/g, '-')}.js</span>
+                    <span className="text-cyan-400 text-xs font-mono ml-1 sm:ml-2 truncate">
+                      {skill.name.toLowerCase().replace(/\s+/g, "-")}.js
+                    </span>
                   </div>
 
                   <div className="flex-1 flex flex-col">
@@ -200,15 +220,15 @@ function Skills() {
                     </div>
 
                     {/* Skill Name */}
-                    <h3 className={`text-lg sm:text-xl font-bold text-center mb-2 bg-gradient-to-r ${skill.color} bg-clip-text text-transparent`}>
+                    <h3
+                      className={`text-lg sm:text-xl font-bold text-center mb-2 bg-gradient-to-r ${skill.color} bg-clip-text text-transparent`}
+                    >
                       {skill.name}
                     </h3>
 
                     {/* Description - Fixed height for consistency */}
                     <div className="text-gray-400 text-xs sm:text-sm text-center mb-3 sm:mb-4 font-mono flex-1 min-h-[2.5rem] flex items-center justify-center">
-                      <p className="leading-relaxed">
-                        {skill.description}
-                      </p>
+                      <p className="leading-relaxed">{skill.description}</p>
                     </div>
 
                     {/* Progress Bar */}
@@ -218,11 +238,12 @@ function Skills() {
                         <span>{skill.level}%</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
-                        <div 
+                        <div
                           className={`bg-gradient-to-r ${skill.color} h-2 rounded-full transition-all duration-1000 ease-out`}
-                          style={{ 
-                            width: index < visibleSkills ? `${skill.level}%` : '0%',
-                            transitionDelay: `${index * 200 + 500}ms`
+                          style={{
+                            width:
+                              index < visibleSkills ? `${skill.level}%` : "0%",
+                            transitionDelay: `${index * 200 + 500}ms`,
                           }}
                         ></div>
                       </div>
@@ -250,13 +271,18 @@ function Skills() {
           <CodeBlock className="max-w-4xl mx-auto">
             <div className="text-cyan-400 space-y-1">
               <div>
-                <span className="text-gray-500">$</span> <span className="text-purple-400">npm</span> <span className="text-cyan-400">run</span> <span className="text-green-400">build-awesome-projects</span>
+                <span className="text-gray-500">$</span>{" "}
+                <span className="text-purple-400">npm</span>{" "}
+                <span className="text-cyan-400">run</span>{" "}
+                <span className="text-green-400">build-awesome-projects</span>
               </div>
               <div className="text-green-400">
-                <span className="text-gray-500"></span> Building incredible applications with these technologies... 🚀
+                <span className="text-gray-500"></span> Building incredible
+                applications with these technologies... 🚀
               </div>
               <div className="text-yellow-400">
-                <span className="text-gray-500"></span> Ready to collaborate and create something amazing! ✨
+                <span className="text-gray-500"></span> Ready to collaborate and
+                create something amazing! ✨
               </div>
             </div>
           </CodeBlock>
@@ -265,8 +291,12 @@ function Skills() {
 
       <style jsx>{`
         @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
         .animate-spin-slow {
           animation: spin-slow 8s linear infinite;

@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { MapPin, Mail, X, CheckCircle, AlertCircle, Info } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { MapPin, Mail, X, CheckCircle, AlertCircle, Info } from "lucide-react";
 
 function Contact() {
   const [matrixChars, setMatrixChars] = useState([]);
   const [glitchActive, setGlitchActive] = useState(false);
   const [toasts, setToasts] = useState([]);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
 
   useEffect(() => {
-    const chars = '01010110100101001011010010110100101101001011010010110100ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const chars =
+      "01010110100101001011010010110100101101001011010010110100ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const newChars = [];
     const charCount = window.innerWidth < 768 ? 25 : 50;
 
@@ -24,36 +25,41 @@ function Contact() {
         x: Math.random() * 100,
         y: Math.random() * 100,
         speed: Math.random() * 0.5 + 0.1,
-        opacity: Math.random() * 0.3 + 0.1
+        opacity: Math.random() * 0.3 + 0.1,
       });
     }
     setMatrixChars(newChars);
 
     const interval = setInterval(() => {
-      setMatrixChars(prev => prev.map(char => ({
-        ...char,
-        y: char.y > 100 ? -5 : char.y + char.speed,
-        char: Math.random() < 0.02 ? chars[Math.floor(Math.random() * chars.length)] : char.char
-      })));
+      setMatrixChars((prev) =>
+        prev.map((char) => ({
+          ...char,
+          y: char.y > 100 ? -5 : char.y + char.speed,
+          char:
+            Math.random() < 0.02
+              ? chars[Math.floor(Math.random() * chars.length)]
+              : char.char,
+        }))
+      );
     }, 50);
 
     return () => clearInterval(interval);
   }, []);
 
   // Toast notification system
-  const showToast = (message, type = 'info') => {
+  const showToast = (message, type = "info") => {
     const id = Date.now();
     const newToast = { id, message, type };
-    setToasts(prev => [...prev, newToast]);
-    
+    setToasts((prev) => [...prev, newToast]);
+
     // Auto remove toast after 5 seconds
     setTimeout(() => {
-      setToasts(prev => prev.filter(toast => toast.id !== id));
+      setToasts((prev) => prev.filter((toast) => toast.id !== id));
     }, 5000);
   };
 
   const removeToast = (id) => {
-    setToasts(prev => prev.filter(toast => toast.id !== id));
+    setToasts((prev) => prev.filter((toast) => toast.id !== id));
   };
 
   function getEmailBody(formData) {
@@ -75,58 +81,69 @@ ${formData.name}`;
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.phone || !formData.subject || !formData.message) {
-      showToast('⚠️ All fields are required!', 'error');
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.subject ||
+      !formData.message
+    ) {
+      showToast("⚠️ All fields are required!", "error");
       return;
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      showToast('Please enter a valid email address', 'error');
+      showToast("Please enter a valid email address", "error");
       return;
     }
 
     // Phone validation (basic)
     const phoneRegex = /^[\+]?[1-9][\d]{3,14}$/;
-    if (!phoneRegex.test(formData.phone.replace(/\s+/g, ''))) {
-      showToast('Please enter a valid phone number', 'error');
+    if (!phoneRegex.test(formData.phone.replace(/\s+/g, ""))) {
+      showToast("Please enter a valid phone number", "error");
       return;
     }
 
     setGlitchActive(true);
     setTimeout(() => setGlitchActive(false), 500);
 
-    const recipientEmail = 'premanshuray981@gmail.com';
+    const recipientEmail = "premanshuray981@gmail.com";
     const emailSubject = formData.subject;
     const emailBody = getEmailBody(formData);
-    
+
     // Create Gmail compose URL
-    const gmailURL = `https://mail.google.com/mail/?view=cm&to=${recipientEmail}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    const gmailURL = `https://mail.google.com/mail/?view=cm&to=${recipientEmail}&su=${encodeURIComponent(
+      emailSubject
+    )}&body=${encodeURIComponent(emailBody)}`;
 
     try {
-      window.open(gmailURL, '_blank');
-      showToast('Gmail opened successfully! Please send your email.', 'success');
-      
+      window.open(gmailURL, "_blank");
+      showToast(
+        "Gmail opened successfully! Please send your email.",
+        "success"
+      );
+
       setTimeout(() => {
         setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: ''
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
         });
-        showToast('Form cleared successfully', 'info');
+        showToast("Form cleared successfully", "info");
       }, 1000);
     } catch (error) {
-      showToast('Failed to open Gmail. Please try again.', 'error');
+      showToast("Failed to open Gmail. Please try again.", "error");
     }
   };
 
@@ -193,11 +210,11 @@ ${formData.name}`;
 
   const getToastIcon = (type) => {
     switch (type) {
-      case 'success':
+      case "success":
         return <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-green-400" />;
-      case 'error':
+      case "error":
         return <AlertCircle className="w-4 h-4 md:w-5 md:h-5 text-red-400" />;
-      case 'info':
+      case "info":
       default:
         return <Info className="w-4 h-4 md:w-5 md:h-5 text-blue-400" />;
     }
@@ -205,40 +222,44 @@ ${formData.name}`;
 
   const getToastStyles = (type) => {
     switch (type) {
-      case 'success':
-        return 'border-green-500 bg-green-900 bg-opacity-90';
-      case 'error':
-        return 'border-red-500 bg-red-900 bg-opacity-90';
-      case 'info':
+      case "success":
+        return "border-green-500 bg-green-900 bg-opacity-90";
+      case "error":
+        return "border-red-500 bg-red-900 bg-opacity-90";
+      case "info":
       default:
-        return 'border-blue-500 bg-blue-900 bg-opacity-90';
+        return "border-blue-500 bg-blue-900 bg-opacity-90";
     }
   };
 
   return (
     <div className="min-h-screen pt-16 md:pt-8 bg-black relative overflow-hidden">
       <style>{glitchKeyframes}</style>
-      
+
       {/* Toast Container */}
       <div className="fixed top-4 right-4 left-4 md:left-auto z-50 space-y-2">
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className={`flex items-start gap-2 md:gap-3 p-3 md:p-4 rounded-lg border backdrop-blur-sm font-mono text-xs md:text-sm w-full md:min-w-80 md:max-w-96 ${getToastStyles(toast.type)}`}
+            className={`flex items-start gap-2 md:gap-3 p-3 md:p-4 rounded-lg border backdrop-blur-sm font-mono text-xs md:text-sm w-full md:min-w-80 md:max-w-96 ${getToastStyles(
+              toast.type
+            )}`}
             style={{
-              animation: 'slideIn 0.3s ease-out'
+              animation: "slideIn 0.3s ease-out",
             }}
           >
             <div className="flex-shrink-0 mt-0.5">
               {getToastIcon(toast.type)}
             </div>
-            <span className="text-white flex-1 leading-relaxed break-words">{toast.message}</span>
+            <span className="text-white flex-1 leading-relaxed break-words">
+              {toast.message}
+            </span>
             <button
               onClick={() => removeToast(toast.id)}
               className="text-gray-400 hover:text-white transition-all duration-300 flex-shrink-0 mt-0.5 p-1 rounded-full hover:bg-white hover:bg-opacity-20 backdrop-blur-sm border border-transparent hover:border-white hover:border-opacity-30"
               style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                backdropFilter: 'blur(10px)'
+                background: "rgba(255, 255, 255, 0.1)",
+                backdropFilter: "blur(10px)",
               }}
             >
               <X className="w-4 h-4" />
@@ -246,7 +267,7 @@ ${formData.name}`;
           </div>
         ))}
       </div>
-      
+
       {/* Matrix Rain Background */}
       <div className="absolute inset-0 pointer-events-none">
         {matrixChars.map((char, index) => (
@@ -257,7 +278,7 @@ ${formData.name}`;
               left: `${char.x}%`,
               top: `${char.y}%`,
               opacity: char.opacity,
-              transform: `translateY(${char.y}px)`
+              transform: `translateY(${char.y}px)`,
             }}
           >
             {char.char}
@@ -284,7 +305,9 @@ ${formData.name}`;
                   <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                   <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="ml-4 text-cyan-400 font-mono text-sm">SECURE_CHANNEL_ACTIVE</span>
+                  <span className="ml-4 text-cyan-400 font-mono text-sm">
+                    SECURE_CHANNEL_ACTIVE
+                  </span>
                 </div>
 
                 <div className="space-y-6">
@@ -298,10 +321,13 @@ ${formData.name}`;
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 bg-transparent border border-cyan-500 border-opacity-50 rounded text-cyan-400 placeholder-cyan-400 placeholder-opacity-50 font-mono focus:border-cyan-400 focus:outline-none focus:shadow-cyan transition-all duration-300"
                         style={{
-                          boxShadow: 'none'
+                          boxShadow: "none",
                         }}
-                        onFocus={(e) => e.target.style.boxShadow = '0 0 10px rgba(34, 211, 238, 0.3)'}
-                        onBlur={(e) => e.target.style.boxShadow = 'none'}
+                        onFocus={(e) =>
+                          (e.target.style.boxShadow =
+                            "0 0 10px rgba(34, 211, 238, 0.3)")
+                        }
+                        onBlur={(e) => (e.target.style.boxShadow = "none")}
                       />
                     </div>
                     <div>
@@ -312,8 +338,11 @@ ${formData.name}`;
                         value={formData.email}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 bg-transparent border border-cyan-500 border-opacity-50 rounded text-cyan-400 placeholder-cyan-400 placeholder-opacity-50 font-mono focus:border-cyan-400 focus:outline-none transition-all duration-300"
-                        onFocus={(e) => e.target.style.boxShadow = '0 0 10px rgba(34, 211, 238, 0.3)'}
-                        onBlur={(e) => e.target.style.boxShadow = 'none'}
+                        onFocus={(e) =>
+                          (e.target.style.boxShadow =
+                            "0 0 10px rgba(34, 211, 238, 0.3)")
+                        }
+                        onBlur={(e) => (e.target.style.boxShadow = "none")}
                       />
                     </div>
                   </div>
@@ -327,8 +356,11 @@ ${formData.name}`;
                         value={formData.phone}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 bg-transparent border border-cyan-500 border-opacity-50 rounded text-cyan-400 placeholder-cyan-400 placeholder-opacity-50 font-mono focus:border-cyan-400 focus:outline-none transition-all duration-300"
-                        onFocus={(e) => e.target.style.boxShadow = '0 0 10px rgba(34, 211, 238, 0.3)'}
-                        onBlur={(e) => e.target.style.boxShadow = 'none'}
+                        onFocus={(e) =>
+                          (e.target.style.boxShadow =
+                            "0 0 10px rgba(34, 211, 238, 0.3)")
+                        }
+                        onBlur={(e) => (e.target.style.boxShadow = "none")}
                       />
                     </div>
                     <div>
@@ -339,8 +371,11 @@ ${formData.name}`;
                         value={formData.subject}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 bg-transparent border border-cyan-500 border-opacity-50 rounded text-cyan-400 placeholder-cyan-400 placeholder-opacity-50 font-mono focus:border-cyan-400 focus:outline-none transition-all duration-300"
-                        onFocus={(e) => e.target.style.boxShadow = '0 0 10px rgba(34, 211, 238, 0.3)'}
-                        onBlur={(e) => e.target.style.boxShadow = 'none'}
+                        onFocus={(e) =>
+                          (e.target.style.boxShadow =
+                            "0 0 10px rgba(34, 211, 238, 0.3)")
+                        }
+                        onBlur={(e) => (e.target.style.boxShadow = "none")}
                       />
                     </div>
                   </div>
@@ -353,8 +388,11 @@ ${formData.name}`;
                       onChange={handleInputChange}
                       rows={6}
                       className="w-full px-4 py-3 bg-transparent border border-cyan-500 border-opacity-50 rounded text-cyan-400 placeholder-cyan-400 placeholder-opacity-50 font-mono focus:border-cyan-400 focus:outline-none transition-all duration-300 resize-none"
-                      onFocus={(e) => e.target.style.boxShadow = '0 0 10px rgba(34, 211, 238, 0.3)'}
-                      onBlur={(e) => e.target.style.boxShadow = 'none'}
+                      onFocus={(e) =>
+                        (e.target.style.boxShadow =
+                          "0 0 10px rgba(34, 211, 238, 0.3)")
+                      }
+                      onBlur={(e) => (e.target.style.boxShadow = "none")}
                     />
                   </div>
 
@@ -363,20 +401,24 @@ ${formData.name}`;
                     onClick={handleSubmit}
                     className="relative w-full overflow-hidden group border-2 border-cyan-400 bg-gray-900 bg-opacity-20 text-white font-bold py-3 md:py-4 px-4 md:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 font-mono text-base md:text-lg"
                     style={{
-                      animation: glitchActive ? 'glitch 0.5s linear' : 'borderGlow 3s infinite'
+                      animation: glitchActive
+                        ? "glitch 0.5s linear"
+                        : "borderGlow 3s infinite",
                     }}
                   >
                     {/* Animated background overlay */}
                     <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-pink-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                    
+
                     {/* Button content */}
                     <div className="relative z-10 flex items-center justify-center gap-2">
                       <span className="text-cyan-300 font-black tracking-wider text-sm md:text-base">
                         SEND VIA GMAIL
                       </span>
-                      <span className="text-xl md:text-2xl animate-pulse">📧</span>
+                      <span className="text-xl md:text-2xl animate-pulse">
+                        📧
+                      </span>
                     </div>
-                    
+
                     {/* Corner accents */}
                     <div className="absolute top-0 left-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-l-2 border-cyan-400 opacity-60"></div>
                     <div className="absolute top-0 right-0 w-3 h-3 md:w-4 md:h-4 border-t-2 border-r-2 border-pink-400 opacity-60"></div>
@@ -410,7 +452,9 @@ ${formData.name}`;
                 </div>
                 <div className="text-cyan-400 font-mono text-sm space-y-2">
                   <p>+91 7047466142</p>
-                  <a href="mailto:premanshuray981@gmail.com">premanshuray981@gmail.com</a>
+                  <a href="mailto:premanshuray981@gmail.com">
+                    premanshuray981@gmail.com
+                  </a>
                 </div>
               </div>
 

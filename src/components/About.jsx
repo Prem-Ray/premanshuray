@@ -1,31 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const About = () => {
   const [matrixChars, setMatrixChars] = useState([]);
   const [showCursor, setShowCursor] = useState(true);
-  const [typewriterText, setTypewriterText] = useState('');
-  const fullText = "Graduated in 2025 from St. Thomas' College of Engineering & Technology with a degree in Electronics & Communication Engineering, I thrive on solving real-world problems through innovation and hands-on execution. I have designed and delivered impactful projects and actively engaged in industry-level training to sharpen my practical understanding. I aim to contribute to forward-thinking teams, embrace new challenges, and continuously evolve through learning and collaboration.";
+  const [typewriterText, setTypewriterText] = useState("");
+  const fullText =
+    "Graduated in 2025 from St. Thomas' College of Engineering & Technology with a degree in Electronics & Communication Engineering, I thrive on solving real-world problems through innovation and hands-on execution. I have designed and delivered impactful projects and actively engaged in industry-level training to sharpen my practical understanding. I aim to contribute to forward-thinking teams, embrace new challenges, and continuously evolve through learning and collaboration.";
 
   useEffect(() => {
     const chars = [];
-    const charCount = window.innerWidth < 768 ? 30 : window.innerWidth < 1024 ? 40 : 50;
+    const charCount =
+      window.innerWidth < 768 ? 30 : window.innerWidth < 1024 ? 40 : 50;
     for (let i = 0; i < charCount; i++) {
       chars.push({
-        char: Math.random() > 0.5 ? '0' : '1',
+        char: Math.random() > 0.5 ? "0" : "1",
         x: Math.random() * 100,
         y: Math.random() * 100,
         speed: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.4 + 0.1
+        opacity: Math.random() * 0.4 + 0.1,
       });
     }
     setMatrixChars(chars);
 
     const interval = setInterval(() => {
-      setMatrixChars(prev => prev.map(char => ({
-        ...char,
-        y: char.y > 100 ? -10 : char.y + char.speed,
-        char: Math.random() > 0.98 ? (Math.random() > 0.5 ? '0' : '1') : char.char
-      })));
+      setMatrixChars((prev) =>
+        prev.map((char) => ({
+          ...char,
+          y: char.y > 100 ? -10 : char.y + char.speed,
+          char:
+            Math.random() > 0.98
+              ? Math.random() > 0.5
+                ? "0"
+                : "1"
+              : char.char,
+        }))
+      );
     }, 100);
 
     return () => clearInterval(interval);
@@ -33,7 +42,7 @@ const About = () => {
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 500);
 
     return () => clearInterval(cursorInterval);
@@ -298,7 +307,7 @@ const About = () => {
               style={{
                 left: `${char.x}%`,
                 top: `${char.y}%`,
-                opacity: char.opacity
+                opacity: char.opacity,
               }}
             >
               {char.char}
@@ -311,7 +320,6 @@ const About = () => {
 
         {/* Main Container */}
         <div className="relative z-10 max-w-7xl mx-auto">
-          
           {/* Terminal Header */}
           <div className="terminal-window p-3 sm:p-4 md:p-5 lg:p-6 mb-6 sm:mb-8 slide-in">
             <div className="flex items-center mb-3 sm:mb-4">
@@ -320,21 +328,23 @@ const About = () => {
                 <div className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-500 rounded-full"></div>
                 <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full"></div>
               </div>
-              <span className="ml-3 sm:ml-4 text-cyan-400 font-mono text-xs sm:text-sm">~/about-me</span>
+              <span className="ml-3 sm:ml-4 text-cyan-400 font-mono text-xs sm:text-sm">
+                ~/about-me
+              </span>
             </div>
             <div className="font-mono text-xs sm:text-sm">
               <span className="text-cyan-400">user@premanshu:~$</span>
               <span className="text-orange-400 ml-2">cat profile.txt</span>
-              {showCursor && <span className="text-white ml-1 animate-pulse">|</span>}
+              {showCursor && (
+                <span className="text-white ml-1 animate-pulse">|</span>
+              )}
             </div>
           </div>
 
           {/* Main Content Grid - Modified for wider right section */}
           <div className="grid grid-cols-1 lg:grid-cols-5 items-start gap-y-10 gap-x-6 lg:gap-x-8 xl:gap-x-12 2xl:gap-x-16 max-w-7xl mx-auto px-4 pt-9 sm:px-6 lg:px-8">
-
             {/* Left Side - Profile + Button (Takes 2 columns) */}
             <div className="flex flex-col items-center justify-start space-y-6 lg:col-span-2 lg:sticky lg:top-8">
-              
               {/* Profile Section */}
               <div className="relative inline-block animate-float">
                 <img
@@ -342,9 +352,21 @@ const About = () => {
                   alt="Premanshu Ray"
                   className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-56 lg:h-56 xl:w-64 xl:h-64 2xl:w-72 2xl:h-72 rounded-full object-cover shadow-lg"
                 />
-                <div className="absolute -top-2 -right-2 text-orange-400 text-lg animate-bounce">🔧</div>
-                <div className="absolute -bottom-2 -left-2 text-cyan-400 text-lg animate-bounce" style={{ animationDelay: '0.5s' }}>⚡</div>
-                <div className="absolute -top-2 -left-2 text-green-400 text-lg animate-bounce" style={{ animationDelay: '1s' }}>📡</div>
+                <div className="absolute -top-2 -right-2 text-orange-400 text-lg animate-bounce">
+                  🔧
+                </div>
+                <div
+                  className="absolute -bottom-2 -left-2 text-cyan-400 text-lg animate-bounce"
+                  style={{ animationDelay: "0.5s" }}
+                >
+                  ⚡
+                </div>
+                <div
+                  className="absolute -top-2 -left-2 text-green-400 text-lg animate-bounce"
+                  style={{ animationDelay: "1s" }}
+                >
+                  📡
+                </div>
               </div>
 
               {/* Profile Info */}
@@ -357,7 +379,9 @@ const About = () => {
                 </p>
                 <div className="flex items-center justify-center space-x-2 text-cyan-400">
                   <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                  <span className="text-xs lg:text-sm">Available for opportunities</span>
+                  <span className="text-xs lg:text-sm">
+                    Available for opportunities
+                  </span>
                 </div>
               </div>
 
@@ -370,7 +394,9 @@ const About = () => {
                       <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                       <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     </div>
-                    <span className="ml-2 text-cyan-400 font-mono text-xs">~/documents</span>
+                    <span className="ml-2 text-cyan-400 font-mono text-xs">
+                      ~/documents
+                    </span>
                   </div>
                   <div className="font-mono text-xs text-gray-400 mb-3">
                     <span className="text-green-400">$</span>
@@ -383,9 +409,15 @@ const About = () => {
                   >
                     <button className="w-full group relative overflow-hidden bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border border-orange-500 rounded-md py-3 px-4 text-sm font-mono text-white hover:border-cyan-400 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/20">
                       <div className="flex items-center justify-center space-x-2">
-                        <span className="text-green-400 group-hover:text-cyan-400 transition-colors">⚡</span>
-                        <span className="text-orange-400 group-hover:text-white transition-colors">download</span>
-                        <span className="text-gray-400 group-hover:text-cyan-400 transition-colors">--resume</span>
+                        <span className="text-green-400 group-hover:text-cyan-400 transition-colors">
+                          ⚡
+                        </span>
+                        <span className="text-orange-400 group-hover:text-white transition-colors">
+                          download
+                        </span>
+                        <span className="text-gray-400 group-hover:text-cyan-400 transition-colors">
+                          --resume
+                        </span>
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                     </button>
@@ -399,27 +431,32 @@ const About = () => {
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold mb-6 lg:mb-8 flex items-center justify-center lg:justify-start">
                 <span className="text-pink-500 mr-2 lg:mr-3">📢</span>
                 <span className="text-white">About</span>
-                <span className="text-orange-500 ml-2 lg:ml-3 text-neon">Me</span>
+                <span className="text-orange-500 ml-2 lg:ml-3 text-neon">
+                  Me
+                </span>
               </h1>
 
               <div className="cyber-card rounded-lg p-4 sm:p-5 lg:p-6 mb-4 sm:mb-6 lg:mb-8 w-full">
                 <h2 className="text-base sm:text-lg md:text-xl lg:text-xl xl:text-2xl font-semibold flex items-center justify-center lg:justify-start">
                   <span className="text-cyan-400 mr-2 lg:mr-3">💡</span>
                   <span className="text-cyan-400 font-mono">&gt;</span>
-                  <span className="text-yellow-400 ml-2 lg:ml-3">Electronics & Communication Engineer</span>
+                  <span className="text-yellow-400 ml-2 lg:ml-3">
+                    Electronics & Communication Engineer
+                  </span>
                 </h2>
               </div>
 
               <div className="cyber-card rounded-lg px-4 py-5 sm:p-6 md:p-8 lg:p-8 xl:p-10 w-full text-justify min-h-[320px] lg:min-h-[360px] xl:min-h-[380px]">
                 <p className="text-gray-300 text-justify text-sm sm:text-base md:text-base lg:text-lg xl:text-xl leading-relaxed">
-                  <span className="text-green-400 font-mono text-sm lg:text-base xl:text-lg">&gt; </span>
+                  <span className="text-green-400 font-mono text-sm lg:text-base xl:text-lg">
+                    &gt;{" "}
+                  </span>
                   <span className="typewriter">{typewriterText}</span>
                   {typewriterText.length < fullText.length && (
                     <span className="animate-pulse">|</span>
                   )}
                 </p>
               </div>
-
             </div>
           </div>
         </div>

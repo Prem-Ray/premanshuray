@@ -379,62 +379,66 @@ const Home = () => {
             </div>
 
             {/* Social Links with enhanced styling */}
-            <div className="flex justify-center items-center lg:justify-start space-x-4 mt-4">
-              <span className="text-gray-400 font-bold hover:text-slate-700">
-                My Coding Profile:
-              </span>
-              <a
-                href="https://codolio.com/profile/premray"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-4 rounded-full p-2 hover:border-pink-600"
-                title="View my Codolio profile"
-              >
-                <img src="./codolio.svg" alt="Codolio" className="w-6 h-6" />
-              </a>
-              <a
-                href="https://github.com/Prem-Ray"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-yellow-400 text-2xl border-4 rounded-full p-2 hover:border-green-600 hover:text-white"
-                title="GitHub Profile"
-              >
-                <FaGithub />
-              </a>
-            </div>
+            <div className="flex justify-start flex-col">
+              <div className="flex justify-center items-center lg:justify-start space-x-4 mt-4">
+                <span className="text-gray-400 font-bold hover:text-slate-700">
+                  My Coding Profile:
+                </span>
+                <a
+                  href="https://codolio.com/profile/premray"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-4 rounded-full p-2 hover:border-rose-950 "
+                  title="View my Codolio profile"
+                >
+                  <img src="./codolio.svg" alt="Codolio" className="w-6 h-6" />
+                </a>
+                <a
+                  href="https://github.com/Prem-Ray"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-yellow-400 text-2xl border-4 rounded-full p-2 hover:border-green-600 hover:text-white"
+                  title="GitHub Profile"
+                >
+                  <FaGithub />
+                </a>
+              </div>
 
-            <div className="flex justify-center items-center lg:justify-start space-x-4 mt-4">
-              <span className="text-gray-400 font-bold hover:text-slate-700">Connect With Me:</span>
+              <div className="flex justify-center items-center lg:justify-start space-x-4 mt-4">
+                <span className="text-gray-400 font-bold hover:text-slate-700">
+                  Connect With Me:
+                </span>
 
-              <a
-                href="https://www.linkedin.com/in/premanshuray/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-yellow-400 text-2xl border-4 rounded-full p-2 hover:border-pink-600 hover:text-blue-600"
-                title="Connect on LinkedIn"
-              >
-                <FaLinkedin />
-              </a>
+                <a
+                  href="https://www.linkedin.com/in/premanshuray/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-yellow-400 text-2xl border-4 rounded-full p-2 hover:border-pink-600 hover:text-blue-600"
+                  title="Connect on LinkedIn"
+                >
+                  <FaLinkedin />
+                </a>
 
-              <a
-                href="https://x.com/RayPremanshu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-yellow-400 text-2xl border-4 rounded-full p-2 hover:border-orange-600 hover:text-blue-600"
-                title="Follow me on X (Twitter)"
-              >
-                <FaTwitter />
-              </a>
+                <a
+                  href="https://x.com/RayPremanshu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-yellow-400 text-2xl border-4 rounded-full p-2 hover:border-orange-600 hover:text-blue-600"
+                  title="Follow me on X (Twitter)"
+                >
+                  <FaTwitter />
+                </a>
 
-              <a
-                href="https://www.instagram.com/iampremray/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-yellow-400 text-2xl border-4 rounded-full p-2 hover:border-blue-600 hover:text-pink-700"
-                title="Follow me on Instagram"
-              >
-                <FaInstagram />
-              </a>
+                <a
+                  href="https://www.instagram.com/iampremray/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-yellow-400 text-2xl border-4 rounded-full p-2 hover:border-blue-600 hover:text-pink-700"
+                  title="Follow me on Instagram"
+                >
+                  <FaInstagram />
+                </a>
+              </div>
             </div>
 
             {/* CTA Button */}

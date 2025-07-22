@@ -16,10 +16,11 @@ const Experience = () => {
     "Authentication successful ✓",
     "Loading professional training data...",
     "Initializing broadcast systems...",
-    "Training module loaded successfully ✓"
+    "Training module loaded successfully ✓",
   ];
 
-  const matrixCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;':\",./<>?";
+  const matrixCharacters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;':\",./<>?";
   const codeSnippets = [
     "transmit(frequency, power);",
     "if (signal.strength > threshold) {",
@@ -32,12 +33,12 @@ const Experience = () => {
     "} catch (error) {",
     "signal.process(audio);",
     "equipment.calibrate();",
-    "transmission.optimize();"
+    "transmission.optimize();",
   ];
 
   useEffect(() => {
     setIsVisible(true);
-    
+
     // Initialize matrix effect
     const initMatrix = () => {
       const chars = [];
@@ -47,9 +48,11 @@ const Experience = () => {
           id: i,
           x: Math.random() * 100,
           y: Math.random() * 100,
-          char: matrixCharacters[Math.floor(Math.random() * matrixCharacters.length)],
+          char: matrixCharacters[
+            Math.floor(Math.random() * matrixCharacters.length)
+          ],
           speed: Math.random() * 2 + 0.5,
-          opacity: Math.random() * 0.3 + 0.1
+          opacity: Math.random() * 0.3 + 0.1,
         });
       }
       setMatrixChars(chars);
@@ -63,17 +66,19 @@ const Experience = () => {
       if (currentCommand < commands.length) {
         let currentText = "";
         let charIndex = 0;
-        
+
         const typeInterval = setInterval(() => {
           if (charIndex < commands[currentCommand].length) {
             currentText += commands[currentCommand][charIndex];
-            setTerminalText(prev => prev + commands[currentCommand][charIndex]);
+            setTerminalText(
+              (prev) => prev + commands[currentCommand][charIndex]
+            );
             charIndex++;
           } else {
             clearInterval(typeInterval);
-            setTerminalText(prev => prev + "\n");
+            setTerminalText((prev) => prev + "\n");
             setTimeout(() => {
-              setCurrentCommand(prev => prev + 1);
+              setCurrentCommand((prev) => prev + 1);
             }, 500);
           }
         }, 50);
@@ -91,16 +96,20 @@ const Experience = () => {
 
     // Cursor blink effect
     const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 500);
 
     // Matrix animation
     const matrixInterval = setInterval(() => {
-      setMatrixChars(prev => prev.map(char => ({
-        ...char,
-        y: (char.y + char.speed) % 100,
-        char: matrixCharacters[Math.floor(Math.random() * matrixCharacters.length)]
-      })));
+      setMatrixChars((prev) =>
+        prev.map((char) => ({
+          ...char,
+          y: (char.y + char.speed) % 100,
+          char: matrixCharacters[
+            Math.floor(Math.random() * matrixCharacters.length)
+          ],
+        }))
+      );
     }, 150);
 
     // Handle window resize
@@ -108,13 +117,13 @@ const Experience = () => {
       initMatrix();
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       clearTimeout(timeout);
       clearInterval(cursorInterval);
       clearInterval(matrixInterval);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, [currentCommand]);
 
@@ -125,7 +134,7 @@ const Experience = () => {
     "FM Transmitters",
     "Electronic & Electrical Equipment",
     "Broadcasting Technology",
-    "Satellite Broadcasting"
+    "Satellite Broadcasting",
   ];
 
   return (
@@ -143,7 +152,7 @@ const Experience = () => {
               left: `${char.x}%`,
               top: `${char.y}%`,
               opacity: char.opacity,
-              textShadow: "0 0 3px rgba(148, 163, 184, 0.3)"
+              textShadow: "0 0 3px rgba(148, 163, 184, 0.3)",
             }}
           >
             {char.char}
@@ -162,7 +171,7 @@ const Experience = () => {
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 5}s`,
               animationDuration: `${4 + Math.random() * 3}s`,
-              textShadow: "0 0 2px rgba(100, 116, 139, 0.2)"
+              textShadow: "0 0 2px rgba(100, 116, 139, 0.2)",
             }}
           >
             {line}
@@ -172,10 +181,14 @@ const Experience = () => {
 
       {/* Subtle scanning lines */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-slate-400 to-transparent opacity-10"
-             style={{ top: "20%", animationDuration: "4s" }}></div>
-        <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-8"
-             style={{ top: "60%", animationDuration: "5s", animationDelay: "2s" }}></div>
+        <div
+          className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-slate-400 to-transparent opacity-10"
+          style={{ top: "20%", animationDuration: "4s" }}
+        ></div>
+        <div
+          className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-8"
+          style={{ top: "60%", animationDuration: "5s", animationDelay: "2s" }}
+        ></div>
       </div>
 
       {/* Subtle circuit board lines */}
@@ -195,7 +208,13 @@ const Experience = () => {
             </g>
           ))}
           <defs>
-            <linearGradient id="subtleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="subtleGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#64748b" />
               <stop offset="100%" stopColor="#475569" />
             </linearGradient>
@@ -205,7 +224,11 @@ const Experience = () => {
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         {/* Header */}
-        <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+        <div
+          className={`text-center mb-8 sm:mb-12 lg:mb-16 transform transition-all duration-1000 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+          }`}
+        >
           <div className="inline-block mb-6 sm:mb-8 relative">
             <div className="bg-gray-800 border-2 border-slate-600 rounded-lg p-3 sm:p-4 lg:p-6 font-mono shadow-xl shadow-slate-700/20">
               <div className="text-slate-400 mb-1 sm:mb-2 text-xs sm:text-sm">
@@ -217,12 +240,16 @@ const Experience = () => {
                 <span className="ml-2 break-all">initialize_session</span>
               </div>
               <div className="text-blue-300 mt-2 h-24 sm:h-32 overflow-hidden text-xs sm:text-sm">
-                <pre className="whitespace-pre-wrap break-words">{terminalText}</pre>
-                {showCursor && <span className="bg-slate-400 text-gray-800">█</span>}
+                <pre className="whitespace-pre-wrap break-words">
+                  {terminalText}
+                </pre>
+                {showCursor && (
+                  <span className="bg-slate-400 text-gray-800">█</span>
+                )}
               </div>
             </div>
           </div>
-          
+
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-mono mb-3 relative leading-tight">
             <span className="text-slate-400">&lt;</span>
             <span className="bg-gradient-to-r from-slate-300 to-blue-300 bg-clip-text text-transparent">
@@ -240,11 +267,15 @@ const Experience = () => {
         </div>
 
         {/* Main Experience Card */}
-        <div className={`max-w-6xl mx-auto transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+        <div
+          className={`max-w-6xl mx-auto transform transition-all duration-1000 delay-300 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+          }`}
+        >
           <div className="relative group">
             {/* Subtle glow */}
             <div className="absolute -inset-1 bg-gradient-to-r from-slate-500 via-blue-500 to-slate-500 rounded-lg blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-            
+
             {/* Main terminal card */}
             <div className="relative bg-gray-800 border-2 border-slate-600 rounded-lg shadow-xl shadow-slate-700/30 overflow-hidden">
               {/* Terminal header */}
@@ -254,7 +285,9 @@ const Experience = () => {
                   <div className="w-3 h-3 sm:w-4 sm:h-4 bg-yellow-400 rounded-full shadow-sm"></div>
                   <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-400 rounded-full shadow-sm"></div>
                 </div>
-                <span className="text-slate-400 font-mono text-xs sm:text-sm hidden sm:block">~/training/broadcast_systems</span>
+                <span className="text-slate-400 font-mono text-xs sm:text-sm hidden sm:block">
+                  ~/training/broadcast_systems
+                </span>
                 <div className="text-blue-300 font-mono text-xs hidden lg:block">
                   CPU: 100% | RAM: 8GB | STATUS: ACTIVE
                 </div>
@@ -273,13 +306,17 @@ const Experience = () => {
                       <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-full"></div>
                     </div>
                   </div>
-                  
+
                   <div className="text-center sm:text-left">
                     <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold font-mono text-slate-300 mb-2 sm:mb-3">
                       PRASAR_BHARATI
                     </h3>
-                    <p className="text-blue-300 text-sm sm:text-base lg:text-lg xl:text-xl font-mono">// India's Public Service Broadcaster</p>
-                    <p className="text-slate-400 font-mono text-xs sm:text-sm lg:text-base">location: Akashvani, Kolkata</p>
+                    <p className="text-blue-300 text-sm sm:text-base lg:text-lg xl:text-xl font-mono">
+                      // India's Public Service Broadcaster
+                    </p>
+                    <p className="text-slate-400 font-mono text-xs sm:text-sm lg:text-base">
+                      location: Akashvani, Kolkata
+                    </p>
                   </div>
                 </div>
 
@@ -289,53 +326,98 @@ const Experience = () => {
                   <div className="text-slate-400 mb-3 sm:mb-4 text-xs sm:text-sm lg:text-base">
                     <span className="text-slate-500">/**</span>
                     <br />
-                    <span className="text-slate-500"> * Professional Training Overview</span>
+                    <span className="text-slate-500">
+                      {" "}
+                      * Professional Training Overview
+                    </span>
                     <br />
-                    <span className="text-slate-500"> * Comprehensive vocational training program</span>
+                    <span className="text-slate-500">
+                      {" "}
+                      * Comprehensive vocational training program
+                    </span>
                     <br />
-                    <span className="text-slate-500"> * Focus: Radio Communication Systems</span>
+                    <span className="text-slate-500">
+                      {" "}
+                      * Focus: Radio Communication Systems
+                    </span>
                     <br />
                     <span className="text-slate-500"> */</span>
                   </div>
                   <div className="text-slate-300 leading-relaxed text-xs sm:text-sm lg:text-base">
-                    <span className="text-blue-300">const</span> <span className="text-white">training</span> <span className="text-slate-400">=</span> <span className="text-yellow-300">&#123;</span><br />
-                    &nbsp;&nbsp;<span className="text-red-300">institution</span><span className="text-slate-400">:</span> <span className="text-emerald-300">'Prasar Bharati'</span><span className="text-white">,</span><br />
-                    &nbsp;&nbsp;<span className="text-red-300">specialization</span><span className="text-slate-400">:</span> <span className="text-emerald-300">'Broadcasting Technology'</span><span className="text-white">,</span><br />
-                    &nbsp;&nbsp;<span className="text-red-300">location</span><span className="text-slate-400">:</span> <span className="text-emerald-300">'Akashvani, Kolkata'</span><span className="text-white">,</span><br />
-                    &nbsp;&nbsp;<span className="text-red-300">status</span><span className="text-slate-400">:</span> <span className="text-emerald-300">'completed'</span><br />
-                    <span className="text-yellow-300">&#125;</span><span className="text-white">;</span>
+                    <span className="text-blue-300">const</span>{" "}
+                    <span className="text-white">training</span>{" "}
+                    <span className="text-slate-400">=</span>{" "}
+                    <span className="text-yellow-300">&#123;</span>
+                    <br />
+                    &nbsp;&nbsp;
+                    <span className="text-red-300">institution</span>
+                    <span className="text-slate-400">:</span>{" "}
+                    <span className="text-emerald-300">'Prasar Bharati'</span>
+                    <span className="text-white">,</span>
+                    <br />
+                    &nbsp;&nbsp;
+                    <span className="text-red-300">specialization</span>
+                    <span className="text-slate-400">:</span>{" "}
+                    <span className="text-emerald-300">
+                      'Broadcasting Technology'
+                    </span>
+                    <span className="text-white">,</span>
+                    <br />
+                    &nbsp;&nbsp;<span className="text-red-300">location</span>
+                    <span className="text-slate-400">:</span>{" "}
+                    <span className="text-emerald-300">
+                      'Akashvani, Kolkata'
+                    </span>
+                    <span className="text-white">,</span>
+                    <br />
+                    &nbsp;&nbsp;<span className="text-red-300">status</span>
+                    <span className="text-slate-400">:</span>{" "}
+                    <span className="text-emerald-300">'completed'</span>
+                    <br />
+                    <span className="text-yellow-300">&#125;</span>
+                    <span className="text-white">;</span>
                   </div>
                 </div>
 
                 {/* Skills array */}
                 <div className="mb-6 sm:mb-8">
                   <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-300 mb-4 sm:mb-6 font-mono">
-                    <span className="text-blue-300">const</span> skills <span className="text-slate-400">=</span> <span className="text-yellow-300">[</span>
+                    <span className="text-blue-300">const</span> skills{" "}
+                    <span className="text-slate-400">=</span>{" "}
+                    <span className="text-yellow-300">[</span>
                   </h4>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 ml-2 sm:ml-4">
                     {skills.map((skill, index) => (
                       <div
                         key={index}
                         className={`transform transition-all duration-700 hover:scale-105 ${
-                          skillsVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                          skillsVisible
+                            ? "translate-y-0 opacity-100"
+                            : "translate-y-10 opacity-0"
                         }`}
                         style={{ transitionDelay: `${index * 150}ms` }}
                       >
                         <div className="bg-gray-700 border-2 border-slate-600 rounded-lg p-3 sm:p-4 hover:border-slate-500 transition-all duration-300 hover:shadow-lg hover:shadow-slate-600/20 relative overflow-hidden group">
                           <div className="absolute top-0 left-0 w-0 h-full bg-gradient-to-r from-slate-500/10 to-blue-500/10 group-hover:w-full transition-all duration-500"></div>
                           <div className="flex items-center space-x-2 sm:space-x-3 relative z-10">
-                            <span className="text-slate-400 font-mono text-xs sm:text-sm">{String(index).padStart(2, '0')}:</span>
-                            <span className="text-slate-200 font-mono text-xs sm:text-sm group-hover:text-white transition-colors break-words">'{skill}'</span>
-                            <span className="text-white font-mono text-xs sm:text-sm">,</span>
+                            <span className="text-slate-400 font-mono text-xs sm:text-sm">
+                              {String(index).padStart(2, "0")}:
+                            </span>
+                            <span className="text-slate-200 font-mono text-xs sm:text-sm group-hover:text-white transition-colors break-words">
+                              '{skill}'
+                            </span>
+                            <span className="text-white font-mono text-xs sm:text-sm">
+                              ,
+                            </span>
                           </div>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-3 sm:mt-4 text-yellow-300 font-mono text-lg sm:text-xl lg:text-2xl">];</div>
+                  <div className="mt-3 sm:mt-4 text-yellow-300 font-mono text-lg sm:text-xl lg:text-2xl">
+                    ];
+                  </div>
                 </div>
-
-               
 
                 {/* Certificate button */}
                 <div className="text-center">
@@ -358,19 +440,27 @@ const Experience = () => {
 
       {/* Subtle floating elements - responsive positioning */}
       <div className="absolute top-16 sm:top-20 right-4 sm:right-10 opacity-20">
-        <div className="text-slate-400 font-mono text-2xl sm:text-3xl lg:text-4xl">{ }</div>
+        <div className="text-slate-400 font-mono text-2xl sm:text-3xl lg:text-4xl">
+          {}
+        </div>
       </div>
-      
+
       <div className="absolute bottom-16 sm:bottom-20 left-4 sm:left-10 opacity-20">
-        <div className="text-blue-400 font-mono text-lg sm:text-xl lg:text-2xl">&lt;/dev&gt;</div>
+        <div className="text-blue-400 font-mono text-lg sm:text-xl lg:text-2xl">
+          &lt;/dev&gt;
+        </div>
       </div>
 
       <div className="absolute top-1/3 left-4 sm:left-10 opacity-15">
-        <div className="text-slate-400 font-mono text-2xl sm:text-3xl lg:text-4xl">⚙️</div>
+        <div className="text-slate-400 font-mono text-2xl sm:text-3xl lg:text-4xl">
+          ⚙️
+        </div>
       </div>
 
       <div className="absolute top-1/2 right-8 sm:right-20 opacity-15">
-        <div className="text-blue-400 font-mono text-xl sm:text-2xl lg:text-3xl">🔧</div>
+        <div className="text-blue-400 font-mono text-xl sm:text-2xl lg:text-3xl">
+          🔧
+        </div>
       </div>
     </section>
   );
