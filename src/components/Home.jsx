@@ -380,7 +380,7 @@ const Home = () => {
 
             {/* Social Links with enhanced styling */}
             <div className="flex justify-center items-center lg:justify-start space-x-4 mt-4">
-              <span className="text-gray-400 font-bold">
+              <span className="text-gray-400 font-bold hover:text-slate-700">
                 My Coding Profile:
               </span>
               <a
@@ -397,14 +397,14 @@ const Home = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-yellow-400 text-2xl border-4 rounded-full p-2 hover:border-green-600 hover:text-white"
-                title="GitHub"
+                title="GitHub Profile"
               >
                 <FaGithub />
               </a>
             </div>
 
             <div className="flex justify-center items-center lg:justify-start space-x-4 mt-4">
-              <span className="text-gray-400 font-bold">Connect With Me:</span>
+              <span className="text-gray-400 font-bold hover:text-slate-700">Connect With Me:</span>
 
               <a
                 href="https://www.linkedin.com/in/premanshuray/"
