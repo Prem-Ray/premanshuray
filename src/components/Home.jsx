@@ -1,5 +1,11 @@
 import React from "react";
-import { FaGithub, FaTwitter, FaInstagram, FaLinkedin, FaArrowRight } from "react-icons/fa";
+import {
+  FaGithub,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+  FaArrowRight,
+} from "react-icons/fa";
 import { HashLink } from "react-router-hash-link";
 
 const Home = () => {
@@ -34,61 +40,88 @@ const Home = () => {
       </HashLink>
 
       {/* Coding + Socials */}
-      <div className="my-12 flex flex-col items-center space-y-10">
+      <div className="my-10 flex flex-col items-center space-y-8 font-[system-ui] text-white">
         {/* Coding Profiles */}
-        <div className="flex items-center gap-6">
-          <h3 className="text-sm uppercase tracking-widest text-gray-400">
+        <div className="flex items-center gap-10">
+          <h3 className="text-xs uppercase tracking-[0.2em] text-gray-400">
             Coding Profiles
           </h3>
           <div className="flex gap-6">
+            {/* Codolio */}
             <a
               href="https://codolio.com/profile/premray"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:opacity-70 transition"
+              className="relative group"
             >
-              <img src="./codolio.svg" alt="Codolio" className="w-6 h-6" />
+              <img
+                src="./codolio.svg"
+                alt="Codolio"
+                className="w-7 h-7 transition-transform duration-300 group-hover:scale-110"
+              />
+              <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-3 py-1 text-xs text-gray-200 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none whitespace-nowrap">
+                Codolio
+              </span>
             </a>
+
+            {/* GitHub */}
             <a
               href="https://github.com/Prem-Ray"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-2xl hover:opacity-70 transition"
+              className="relative group text-2xl"
             >
-              <FaGithub />
+              <FaGithub className="transition-transform duration-300 group-hover:scale-110" />
+              <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-3 py-1 text-xs text-gray-200 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none whitespace-nowrap">
+                GitHub
+              </span>
             </a>
           </div>
         </div>
 
         {/* Social Profiles */}
         <div className="flex items-center gap-6">
-          <h3 className="text-sm uppercase tracking-widest text-gray-400">
+          <h3 className="text-xs uppercase tracking-[0.2em] text-gray-400">
             Socials
           </h3>
-          <div className="flex gap-6 text-2xl">
+          <div className="flex gap-8 text-2xl">
+            {/* LinkedIn */}
             <a
               href="https://www.linkedin.com/in/premanshuray/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:opacity-70 transition"
+              className="relative group"
             >
-              <FaLinkedin />
+              <FaLinkedin className="transition-transform duration-300 group-hover:scale-110" />
+              <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-3 py-1 text-xs text-gray-200 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none whitespace-nowrap">
+                LinkedIn
+              </span>
             </a>
+
+            {/* Twitter/X */}
             <a
               href="https://x.com/RayPremanshu"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:opacity-70 transition"
+              className="relative group"
             >
-              <FaTwitter />
+              <FaTwitter className="transition-transform duration-300 group-hover:scale-110" />
+              <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-3 py-1 text-xs text-gray-200 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none whitespace-nowrap">
+                X (Twitter)
+              </span>
             </a>
+
+            {/* Instagram */}
             <a
               href="https://www.instagram.com/iampremray/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:opacity-70 transition"
+              className="relative group"
             >
-              <FaInstagram />
+              <FaInstagram className="transition-transform duration-300 group-hover:scale-110" />
+              <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 rounded-md bg-neutral-900 px-3 py-1 text-xs text-gray-200 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none whitespace-nowrap">
+                Instagram
+              </span>
             </a>
           </div>
         </div>
@@ -96,8 +129,8 @@ const Home = () => {
 
       {/* Tagline */}
       <div className="max-w-2xl mb-8 mt-8 text-gray-300 text-xl sm:text-2xl leading-relaxed animate-fadeIn">
-        Creative Frontend Developer passionate about crafting experiences
-        that unite clean design and seamless performance.
+        Creative Frontend Developer passionate about crafting experiences that
+        unite clean design and seamless performance.
       </div>
     </section>
   );
