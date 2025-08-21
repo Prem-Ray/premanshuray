@@ -86,25 +86,24 @@ const About = () => {
         <p className="text-lg sm:text-xl text-gray-400 mt-4 fade-in">
           Electronics & Communication Engineer
         </p>
-       <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
-  <a
-    href="/PREMANSHU_RAY_RESUME.pdf"
-    download="Premanshu_Ray_Resume.pdf"
-    className="cta-btn bg-white text-black hover:bg-gray-200 px-6 py-3 rounded font-medium text-center"
-  >
-    Download Resume
-  </a>
+        <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
+          <a
+            href="/PREMANSHU_RAY_RESUME.pdf"
+            download="Premanshu_Ray_Resume.pdf"
+            className="cta-btn bg-white text-black hover:bg-gray-200 px-6 py-3 rounded font-medium text-center"
+          >
+            Download Resume
+          </a>
 
-  <a
-    href="https://drive.google.com/file/d/1Es_OCpw7VYoEwX35l3oiRcyI2NMpX2Ed/view"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="cta-btn bg-white text-black hover:bg-gray-200 px-6 py-3 rounded font-medium text-center"
-  >
-    View Resume
-  </a>
-</div>
-
+          <a
+            href="https://drive.google.com/file/d/1Es_OCpw7VYoEwX35l3oiRcyI2NMpX2Ed/view"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-btn bg-white text-black hover:bg-gray-200 px-6 py-3 rounded font-medium text-center"
+          >
+            View Resume
+          </a>
+        </div>
       </section>
 
       {/* About Text */}
@@ -134,7 +133,7 @@ const About = () => {
       <section className="bg-black text-white py-24 text-center">
         <h2>Let’s build something amazing.</h2>
         <a
-          href="mailto:premanshuray981@gmail.com"
+          href="/contact"
           className="cta-btn bg-white text-black hover:bg-gray-200 mt-6 inline-block"
         >
           Get in Touch
