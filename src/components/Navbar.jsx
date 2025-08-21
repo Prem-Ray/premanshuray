@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,92 +16,94 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "/", symbol: "🏠" },
-    { name: "About", href: "/about", symbol: "👨‍💻" },
-    { name: "Education", href: "/education", symbol: "🎓" },
-    { name: "Experience", href: "/experience", symbol: "💼" },
-    { name: "Skills", href: "/skills", symbol: "⚡" },
-    { name: "Projects", href: "/projects", symbol: "🚀" },
-    { name: "Contact", href: "/contact", symbol: "📬" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Education", href: "/education" },
+    { name: "Experience", href: "/experience" },
+    { name: "Skills", href: "/skills" },
+    { name: "Projects", href: "/projects" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <nav
-      className={`fixed top-[2vh] left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+    <motion.nav
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-black/5 backdrop-blur-md shadow-lg py-1"
-          : "backdrop-blur-md bg-black/5 py-2"
+          ? "bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-black/10 dark:border-white/20"
+          : "bg-white/60 dark:bg-black/60 backdrop-blur-md"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center py-3">
           {/* Logo */}
-          <div className="relative group flex-shrink-0">
-            <div className="cyber-border bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-400 p-0.5 rounded-lg">
-              <div className="bg-black px-3 py-1.5 rounded-lg">
-                <div className="text-white text-xl font-bold font-mono cursor-pointer relative overflow-hidden whitespace-nowrap">
-                  <span className="glitch-text" data-text="ray">
-                    ray
-                  </span>
-                  <span className="glitch-text" data-text="Premanshu">
-                    Premanshu
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Link to="/" className="font-mono font-bold text-lg">
+            <span className="text-black dark:text-white">Premanshu</span>
+          </Link>
 
-          {/* Desktop menu (only visible on lg and above) */}
-          <div className="hidden lg:flex items-center space-x-2">
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
-                className={`px-3 py-2 text-sm font-mono font-medium flex items-center space-x-1.5 transition-colors duration-300 ease-in-out ${
+                className={`relative text-sm font-mono transition-colors duration-300 ${
                   location.pathname === item.href
-                    ? "text-cyan-400"
-                    : "text-gray-300 hover:text-white"
+                    ? "text-black dark:text-white font-semibold" // Active link
+                    : "text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white"
                 }`}
               >
-                <span>{item.symbol}</span>
-                <span>{item.name}</span>
+                {item.name}
               </Link>
             ))}
           </div>
 
-          {/* Hamburger (visible on md and below) */}
+          {/* Mobile Hamburger */}
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white text-sm font-bold rounded-full focus:outline-none"
               aria-label="Toggle Menu"
+              className={`text-xl focus:outline-none duration-300 
+                bg-black rounded-md p-2
+                text-white
+              `}
             >
               ☰
             </button>
           </div>
         </div>
 
-        {/* Mobile & Tablet Menu (md & below) */}
-        {isOpen && (
-          <div className="lg:hidden mt-2 space-y-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                onClick={() => setIsOpen(false)}
-                className={`block px-4 py-2 rounded text-sm font-mono transition-colors duration-200 ${
-                  location.pathname === item.href
-                    ? "text-cyan-400"
-                    : "text-gray-300 hover:text-white hover:bg-cyan-500/20"
-                }`}
-              >
-                <span>{item.symbol}</span> {item.name}
-              </Link>
-            ))}
-          </div>
-        )}
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="lg:hidden mt-2 space-y-2 pb-4"
+            >
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-4 py-2 rounded text-sm font-mono transition-colors ${
+                    location.pathname === item.href
+                      ? "text-black dark:text-white font-semibold"
+                      : "text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

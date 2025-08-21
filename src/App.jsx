@@ -14,7 +14,7 @@ import Home from './components/Home';
 function App() {
   return (
     <Router>
-      <div className="font-sans bg-gray-50 text-gray-800">
+      <div className="">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
