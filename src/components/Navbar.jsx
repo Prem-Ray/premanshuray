@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,26 +37,31 @@ const Navbar = () => {
           : "bg-white/60 dark:bg-black/60 backdrop-blur-md"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-3">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link to="/" className="font-mono font-bold text-lg">
-            <span className="text-black dark:text-white">Premanshu</span>
+          <Link
+            to="/"
+            className="font-sf-pro text-xl font-semibold tracking-[0.04em] text-black dark:text-white uppercase"
+            style={{ fontVariantLigatures: "none" }}
+          >
+            Premanshu
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-10">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
-                className={`relative text-sm font-mono transition-colors duration-300 ${
+                className={`relative group text-[17px] font-sf-pro tracking-[0.04em] uppercase select-none transition-colors duration-300 ${
                   location.pathname === item.href
-                    ? "text-black dark:text-white font-semibold" // Active link
-                    : "text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white"
+                    ? "text-black dark:text-white font-semibold"
+                    : "text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
                 }`}
               >
                 {item.name}
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-black dark:bg-white transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
           </div>
@@ -65,12 +71,10 @@ const Navbar = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle Menu"
-              className={`text-xl focus:outline-none duration-300 
-                bg-black rounded-md p-2
-                text-white
-              `}
+              className="focus:outline-none rounded-md p-2 bg-black text-white"
+              style={{ WebkitTapHighlightColor: "transparent" }}
             >
-              ☰
+              {isOpen ? <X size={24} color="white" /> : <Menu size={24} color="white" />}
             </button>
           </div>
         </div>
@@ -90,10 +94,10 @@ const Navbar = () => {
                   key={item.name}
                   to={item.href}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-4 py-2 rounded text-sm font-mono transition-colors ${
+                  className={`block px-6 py-3 rounded text-[17px] font-sf-pro tracking-[0.04em] uppercase transition-colors duration-300 ${
                     location.pathname === item.href
                       ? "text-black dark:text-white font-semibold"
-                      : "text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white"
+                      : "text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
                   }`}
                 >
                   {item.name}
