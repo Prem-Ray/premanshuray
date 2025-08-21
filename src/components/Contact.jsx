@@ -49,7 +49,7 @@ function Contact() {
 
   return (
     <div
-      className="min-h-screen bg-white text-black dark:bg-black dark:text-white transition-colors duration-500"
+      className="contact min-h-screen bg-white text-black dark:bg-black dark:text-white transition-colors duration-500"
       style={{ fontFamily: appleFontFamily }}
     >
       <div className="max-w-6xl mx-auto px-6 py-20">
