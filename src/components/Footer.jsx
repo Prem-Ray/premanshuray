@@ -22,28 +22,21 @@ function FloatingContacts() {
   return (
     <div
       className="
-        fixed bottom-4
-        left-4 sm:left-auto sm:right-5
+        fixed bottom-4 right-4 sm:right-5
         z-50 transition-all duration-500
-        flex 
-        sm:flex-col 
-        items-center
+        flex items-center
       "
     >
-      {/* Contact Items: horizontal on mobile, vertical on sm+ */}
+      {/* Contact Items - expand to the left */}
       <div
         className={`
           flex
           ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
           transition-all duration-300
-          ${
-            // flex row on mobile, column on sm+
-            "flex-row space-x-3 sm:flex-col sm:space-x-0 sm:space-y-3"
-          }
-          mb-0 sm:mb-4
-          mr-4 sm:mr-0
-          sm:items-center
-          ${isOpen ? "translate-x-0 translate-y-0" : "translate-x-[-1.5rem] sm:translate-y-6"}
+          flex-row-reverse space-x-reverse space-x-3
+          mr-0 ml-4
+          items-center
+          ${isOpen ? "translate-x-0" : "translate-x-6"}
         `}
       >
         {contacts.map((contact) => (
@@ -81,6 +74,7 @@ function FloatingContacts() {
           shadow-xl
           hover:scale-110 transition transform
           active:scale-95
+          ml-3
         "
         aria-label="Toggle contact options"
       >
@@ -93,6 +87,7 @@ function FloatingContacts() {
     </div>
   );
 }
+
 
 
 function Footer() {
