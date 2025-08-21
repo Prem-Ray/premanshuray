@@ -109,9 +109,7 @@ function Contact() {
                 <MapPin className="w-5 h-5" /> Location
               </h3>
               <p className="mt-2 text-gray-600 dark:text-gray-400">
-                Arambagh, West Bengal, India
-                <br />
-                PIN: 712616
+                Kolkata, West Bengal, India
               </p>
             </div>
 
