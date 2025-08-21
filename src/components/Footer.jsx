@@ -29,7 +29,7 @@ function FloatingContacts() {
       {/* Contact Items */}
       <div
         className={`
-          flex items-center gap-3
+          flex items-center flex-col gap-3
           transition-all duration-300
           ${
             isOpen
