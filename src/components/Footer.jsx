@@ -23,54 +23,53 @@ function FloatingContacts() {
     <div
       className="
         fixed bottom-4 right-4 sm:right-5
-        z-50 transition-all duration-500
-        flex items-center
+        z-50 flex items-center
       "
     >
-      {/* Contact Items - expand left */}
+      {/* Contact Items */}
       <div
-  className={`
-    flex
-    ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
-    transition-all duration-300
-    flex-row-reverse space-x-reverse space-x-3
-    ml-4
-    items-center
-    ${isOpen ? "translate-x-0" : "translate-x-6"}
-    max-w-[calc(100vw-6rem)]  /* prevent overflow from right padding */
-    overflow-x-auto scrollbar-hide
-  `}
->
-  {contacts.map((contact) => (
-    <a
-      key={contact.id}
-      href={contact.href}
-      target={contact.id === "whatsapp" ? "_blank" : "_self"}
-      rel="noopener noreferrer"
-      className="
-        flex items-center space-x-2 sm:space-x-3 rounded-full
-        bg-white dark:bg-black shadow-lg 
-        px-3 sm:px-4 py-2 
-        hover:shadow-xl hover:scale-105
-        transition-all border border-gray-200 dark:border-gray-800
-        min-w-[110px] sm:min-w-[130px]
-        max-w-full min-w-0
-      "
-    >
-      <span className="text-gray-900 dark:text-white font-medium text-xs sm:text-sm whitespace-nowrap truncate min-w-0">
-        {contact.label}
-      </span>
-      <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gray-900 dark:bg-white text-white dark:text-black shadow-md hover:scale-110 transition">
-        {contact.icon}
+        className={`
+          flex items-center gap-3
+          transition-all duration-300
+          ${
+            isOpen
+              ? "opacity-100 translate-x-0 pointer-events-auto"
+              : "opacity-0 translate-x-6 pointer-events-none"
+          }
+          max-w-[calc(100vw-6rem)]
+          overflow-x-auto scrollbar-hide
+        `}
+      >
+        {contacts.map((contact) => (
+          <a
+            key={contact.id}
+            href={contact.href}
+            target={contact.id === "whatsapp" ? "_blank" : "_self"}
+            rel="noopener noreferrer"
+            className="
+              flex items-center sm:space-x-3 space-x-2 rounded-full
+              bg-white dark:bg-black shadow-lg 
+              px-3 sm:px-4 py-2 
+              hover:shadow-xl hover:scale-105
+              transition-all border border-gray-200 dark:border-gray-800
+              min-w-[110px] sm:min-w-[130px]
+            "
+          >
+            <span className="text-gray-900 dark:text-white font-medium text-xs sm:text-sm truncate">
+              {contact.label}
+            </span>
+            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gray-900 dark:bg-white text-white dark:text-black shadow-md hover:scale-110 transition">
+              {contact.icon}
+            </div>
+          </a>
+        ))}
       </div>
-    </a>
-  ))}
-</div>
-
 
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Toggle contact options"
+        aria-expanded={isOpen}
         className="
           w-14 h-14 sm:w-16 sm:h-16
           flex items-center justify-center 
@@ -80,9 +79,7 @@ function FloatingContacts() {
           hover:scale-110 transition transform
           active:scale-95
           ml-3
-          touch-manipulation
         "
-        aria-label="Toggle contact options"
       >
         {isOpen ? (
           <X className="w-6 h-6 sm:w-7 sm:h-7" />
