@@ -7,13 +7,13 @@ function FloatingContacts() {
   const contacts = [
     {
       id: "call",
-      icon: <Phone className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />,
+      icon: <Phone className="w-5 h-5 sm:w-6 sm:h-6" />,
       label: "Call Now",
       href: "tel:+917047466142",
     },
     {
       id: "whatsapp",
-      icon: <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />,
+      icon: <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6" />,
       label: "WhatsApp",
       href: "https://wa.me/917047466142?text=Hello%20Premanshu!",
     },
@@ -22,29 +22,28 @@ function FloatingContacts() {
   return (
     <div
       className="
-        fixed bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8
+        fixed bottom-4
+        left-4 sm:left-auto sm:right-5
         z-50 transition-all duration-500
-        flex flex-col items-end
+        flex 
+        sm:flex-col 
+        items-center
       "
     >
-      {/* Contact Items */}
+      {/* Contact Items: horizontal on mobile, vertical on sm+ */}
       <div
         className={`
-          flex flex-col sm:flex-row-reverse 
-          ${
-            isOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          }
+          flex
+          ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
           transition-all duration-300
-          space-y-2 sm:space-y-0 sm:space-x-reverse sm:space-x-3 lg:space-x-4
-          mb-2 sm:mb-0 sm:ml-4
-          items-end sm:items-center
           ${
-            isOpen
-              ? "translate-y-0 sm:translate-x-0"
-              : "translate-y-4 sm:translate-x-6"
+            // flex row on mobile, column on sm+
+            "flex-row space-x-3 sm:flex-col sm:space-x-0 sm:space-y-3"
           }
+          mb-0 sm:mb-4
+          mr-4 sm:mr-0
+          sm:items-center
+          ${isOpen ? "translate-x-0 translate-y-0" : "translate-x-[-1.5rem] sm:translate-y-6"}
         `}
       >
         {contacts.map((contact) => (
@@ -54,17 +53,17 @@ function FloatingContacts() {
             target={contact.id === "whatsapp" ? "_blank" : "_self"}
             rel="noopener noreferrer"
             className="
-              flex items-center space-x-2 sm:space-x-3 lg:space-x-4 rounded-full
+              flex items-center space-x-2 sm:space-x-3 rounded-full
               bg-white dark:bg-black shadow-lg 
-              px-3 sm:px-4 lg:px-5 py-2 lg:py-3
+              px-3 sm:px-4 py-2 
               hover:shadow-xl hover:scale-105
               transition-all border border-gray-200 dark:border-gray-800 w-fit
             "
           >
-            <span className="text-gray-900 dark:text-white font-medium text-xs sm:text-sm lg:text-base whitespace-nowrap">
+            <span className="text-gray-900 dark:text-white font-medium text-xs sm:text-sm whitespace-nowrap">
               {contact.label}
             </span>
-            <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex items-center justify-center rounded-full bg-gray-900 dark:bg-white text-white dark:text-black shadow-md hover:scale-110 transition">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gray-900 dark:bg-white text-white dark:text-black shadow-md hover:scale-110 transition">
               {contact.icon}
             </div>
           </a>
@@ -75,7 +74,7 @@ function FloatingContacts() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="
-          w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16
+          w-14 h-14 sm:w-16 sm:h-16
           flex items-center justify-center 
           rounded-full
           bg-black dark:bg-white text-white dark:text-black 
@@ -86,13 +85,60 @@ function FloatingContacts() {
         aria-label="Toggle contact options"
       >
         {isOpen ? (
-          <X className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
+          <X className="w-6 h-6 sm:w-7 sm:h-7" />
         ) : (
-          <Plus className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
+          <Plus className="w-6 h-6 sm:w-7 sm:h-7" />
         )}
       </button>
     </div>
   );
 }
 
-export default FloatingContacts;
+
+function Footer() {
+  return (
+    <footer className="bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-6 sm:py-8 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto text-center space-y-3 sm:space-y-4">
+        {/* Brand Name */}
+        <p className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200 tracking-tight">
+          Premanshu Ray
+        </p>
+
+        {/* Divider */}
+        <div className="w-full h-px bg-gray-200 dark:bg-gray-700" />
+
+        {/* Copyright */}
+        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+          © {new Date().getFullYear()} Premanshu Ray. All rights reserved.
+        </p>
+
+        {/* Footer Links */}
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+          <a
+            href="#privacy"
+            className="hover:text-black dark:hover:text-white transition"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="#terms"
+            className="hover:text-black dark:hover:text-white transition"
+          >
+            Terms of Service
+          </a>
+          <a
+            href="#support"
+            className="hover:text-black dark:hover:text-white transition"
+          >
+            Support
+          </a>
+        </div>
+      </div>
+
+      {/* Floating Contacts */}
+      <FloatingContacts />
+    </footer>
+  );
+}
+
+export default Footer;
