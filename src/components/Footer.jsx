@@ -27,41 +27,46 @@ function FloatingContacts() {
         flex items-center
       "
     >
-      {/* Contact Items - expand to the left */}
+      {/* Contact Items - expand left */}
       <div
-        className={`
-          flex
-          ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
-          transition-all duration-300
-          flex-row-reverse space-x-reverse space-x-3
-          mr-0 ml-4
-          items-center
-          ${isOpen ? "translate-x-0" : "translate-x-6"}
-        `}
-      >
-        {contacts.map((contact) => (
-          <a
-            key={contact.id}
-            href={contact.href}
-            target={contact.id === "whatsapp" ? "_blank" : "_self"}
-            rel="noopener noreferrer"
-            className="
-              flex items-center space-x-2 sm:space-x-3 rounded-full
-              bg-white dark:bg-black shadow-lg 
-              px-3 sm:px-4 py-2 
-              hover:shadow-xl hover:scale-105
-              transition-all border border-gray-200 dark:border-gray-800 w-fit
-            "
-          >
-            <span className="text-gray-900 dark:text-white font-medium text-xs sm:text-sm whitespace-nowrap">
-              {contact.label}
-            </span>
-            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gray-900 dark:bg-white text-white dark:text-black shadow-md hover:scale-110 transition">
-              {contact.icon}
-            </div>
-          </a>
-        ))}
+  className={`
+    flex
+    ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
+    transition-all duration-300
+    flex-row-reverse space-x-reverse space-x-3
+    ml-4
+    items-center
+    ${isOpen ? "translate-x-0" : "translate-x-6"}
+    max-w-[calc(100vw-6rem)]  /* prevent overflow from right padding */
+    overflow-x-auto scrollbar-hide
+  `}
+>
+  {contacts.map((contact) => (
+    <a
+      key={contact.id}
+      href={contact.href}
+      target={contact.id === "whatsapp" ? "_blank" : "_self"}
+      rel="noopener noreferrer"
+      className="
+        flex items-center space-x-2 sm:space-x-3 rounded-full
+        bg-white dark:bg-black shadow-lg 
+        px-3 sm:px-4 py-2 
+        hover:shadow-xl hover:scale-105
+        transition-all border border-gray-200 dark:border-gray-800
+        min-w-[110px] sm:min-w-[130px]
+        max-w-full min-w-0
+      "
+    >
+      <span className="text-gray-900 dark:text-white font-medium text-xs sm:text-sm whitespace-nowrap truncate min-w-0">
+        {contact.label}
+      </span>
+      <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gray-900 dark:bg-white text-white dark:text-black shadow-md hover:scale-110 transition">
+        {contact.icon}
       </div>
+    </a>
+  ))}
+</div>
+
 
       {/* Toggle Button */}
       <button
@@ -75,6 +80,7 @@ function FloatingContacts() {
           hover:scale-110 transition transform
           active:scale-95
           ml-3
+          touch-manipulation
         "
         aria-label="Toggle contact options"
       >
@@ -87,8 +93,6 @@ function FloatingContacts() {
     </div>
   );
 }
-
-
 
 function Footer() {
   return (
