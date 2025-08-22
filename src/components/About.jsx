@@ -124,7 +124,7 @@ const About = () => {
         <h2 className="fade-in">My Philosophy</h2>
         <p className="max-w-3xl mx-auto fade-in mt-4">
           Great engineering is about designing simple solutions for complex
-          problems. Like Apple, I believe in the power of focus, clarity, and
+          problems. I believe in the power of focus, clarity, and
           seamless user experience.
         </p>
       </section>
