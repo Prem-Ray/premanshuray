@@ -35,7 +35,7 @@ const projectData = [
       "A real-time quiz app with dynamic question rendering, instant validation, and score tracking.",
     link: "https://kheloquiz.netlify.app/",
     github: "https://github.com/Prem-Ray/quizapplication",
-    tech: ["JavaScript", "HTML", "Tailwind CSS"],
+    tech: ["JavaScript", "HTML", "CSS"],
     image: "/quiz.png",
   },
   {
