@@ -88,7 +88,7 @@ const About = () => {
         </p>
         <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
           <a
-            href="/PREMANSHU_RAY_RESUME.pdf"
+            href="/premanshuray_resume.pdf"
             download="Premanshu_Ray_Resume.pdf"
             className="cta-btn bg-white text-black hover:bg-gray-200 px-6 py-3 rounded font-medium text-center"
           >
@@ -96,7 +96,7 @@ const About = () => {
           </a>
 
           <a
-            href="https://drive.google.com/file/d/1Es_OCpw7VYoEwX35l3oiRcyI2NMpX2Ed/view"
+            href="https://drive.google.com/file/d/177gB5Skf8cC93Umu_5fW-iQJGCJI2NfK"
             target="_blank"
             rel="noopener noreferrer"
             className="cta-btn bg-white text-black hover:bg-gray-200 px-6 py-3 rounded font-medium text-center"
