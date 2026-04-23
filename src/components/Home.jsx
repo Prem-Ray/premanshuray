@@ -129,8 +129,9 @@ const Home = () => {
 
       {/* Tagline */}
       <div className="max-w-2xl mb-8 mt-8 text-gray-300 text-xl sm:text-2xl leading-relaxed animate-fadeIn">
-        Creative Frontend Developer passionate about crafting experiences that
-        unite clean design and seamless performance.
+        Software Engineer experienced in developing features, resolving
+        production issues, and supporting releases, with a focus on building
+        scalable and reliable systems.
       </div>
     </section>
   );
