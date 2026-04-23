@@ -3,13 +3,35 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const projectData = [
   {
-    title: "🏥 Smart & Early Abnormality Diagnosis System",
+    title: "🏥 HealthiFy – AI-Based IoT Health Monitoring System",
     description:
-      "IoT-based health monitoring with live tracking of SpO₂, heart rate, BMI, and ECG, plus doctor appointment features.",
+      "Full-stack IoT platform for real-time ECG, SpO₂, and heart rate monitoring with AI‑based abnormality detection, emergency WhatsApp alerts with GPS, and doctor search, booking, and call features.",
     link: "https://ecegroup2.github.io/",
     github: "https://github.com/ecegroup2/ecegroup2.github.io",
-    tech: ["IoT", "React", "JavaScript", "Tailwind", "HTML/CSS"],
+    tech: [
+      "Arduino UNO",
+      "Raspberry Pi",
+      "MAX30102",
+      "AD8232",
+      "React",
+      "Tailwind CSS",
+      "Spring Boot",
+      "H2 DB",
+      "SQL",
+      "Python",
+      "TensorFlow",
+      "Linux CLI",
+    ],
     image: "/smarthelth.jpg",
+  },
+  {
+    title: "🌟 Quiz Application",
+    description:
+      "A browser-based quiz platform with real-time scoring, countdown timer, result dashboard, and built-in anti-cheating features like tab-switch detection and shortcut restrictions.",
+    link: "https://kheloquiz.netlify.app/",
+    github: "https://github.com/Prem-Ray/quizapplication",
+    tech: ["JavaScript", "HTML", "CSS"],
+    image: "/quiz.png",
   },
   {
     title: "🎬 Movie Point",
@@ -30,17 +52,9 @@ const projectData = [
     image: "/git.png",
   },
   {
-    title: "🌟 Quiz Application",
-    description:
-      "A real-time quiz app with dynamic question rendering, instant validation, and score tracking.",
-    link: "https://kheloquiz.netlify.app/",
-    github: "https://github.com/Prem-Ray/quizapplication",
-    tech: ["JavaScript", "HTML", "CSS"],
-    image: "/quiz.png",
-  },
-  {
     title: "🔑 Password Generator",
-    description: "Customizable secure password generator with instant copy support.",
+    description:
+      "Customizable secure password generator with instant copy support.",
     link: "https://paswordgeneratorapplication.netlify.app/",
     github: "https://github.com/Prem-Ray/Password-Generator",
     tech: ["JavaScript", "HTML", "CSS"],
@@ -57,8 +71,7 @@ const projectData = [
   },
   {
     title: "🎙️ Text to Speech Generator",
-    description:
-      "Simple and fast speech synthesis app using Web Speech API.",
+    description: "Simple and fast speech synthesis app using Web Speech API.",
     link: "https://texttospeechgenerator.netlify.app/",
     github: "https://github.com/Prem-Ray/texttospeechgenerator",
     tech: ["JavaScript", "Web Speech API", "HTML/CSS"],
@@ -143,8 +156,10 @@ const Projects = () => {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-14">
-          <h2 className="text-[40px] md:text-[52px] lg:text-[64px] 
-                         font-semibold tracking-tight text-gray-900 leading-[1.1]">
+          <h2
+            className="text-[40px] md:text-[52px] lg:text-[64px] 
+                         font-semibold tracking-tight text-gray-900 leading-[1.1]"
+          >
             <span className="mr-2">🗂️</span>
             Latest Projects
           </h2>
