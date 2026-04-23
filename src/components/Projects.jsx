@@ -183,7 +183,7 @@ const Projects = () => {
 
         {/* Project Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 auto-rows-fr"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -192,7 +192,7 @@ const Projects = () => {
             {projectData.slice(0, visibleProjects).map((project) => (
               <motion.div
                 key={project.title}
-                className="flex flex-col bg-white rounded-2xl border border-gray-200 
+                className="flex flex-col h-full bg-white rounded-2xl border border-gray-200 
                            overflow-hidden hover:shadow-md transition-shadow duration-300"
                 variants={cardVariants}
                 initial="hidden"
@@ -215,33 +215,44 @@ const Projects = () => {
                 </div>
 
                 {/* Card Body */}
-                <div className="flex flex-col flex-1 p-6 space-y-3">
-                  <h3 className="text-[22px] font-medium tracking-tight text-gray-900">
+                <div className="flex flex-col flex-1 p-6">
+                  <h3 className="text-[22px] font-medium tracking-tight text-gray-900 mb-3">
                     {project.title}
                   </h3>
-                  <p className="text-[17px] leading-relaxed text-gray-600 flex-1">
+                  <p className="text-[16px] leading-relaxed text-gray-600 flex-1 mb-6">
                     {project.description}
                   </p>
 
                   {/* Tech */}
-                  <div>
-                    <span className="text-xs uppercase tracking-wide text-gray-400">
-                      Tech Stack
-                    </span>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className="bg-gray-900 text-white text-xs px-3 py-1 rounded-full"
-                        >
-                          {tech}
+                  <div className="mb-6 w-full relative">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+                        Tech Stack
+                      </span>
+                      {project.tech.length > 3 && (
+                        <span className="text-[10px] text-gray-400/80 tracking-wide animate-pulse">
+                          Scroll ➔
                         </span>
-                      ))}
+                      )}
+                    </div>
+                    <div className="relative">
+                      {/* Fade edge indicator */}
+                      <div className="absolute right-0 top-0 bottom-2 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
+                      <div className="flex overflow-x-auto gap-2 pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                        {project.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className="bg-gray-900 text-white text-[11px] md:text-xs px-3 py-1 rounded-full whitespace-nowrap flex-shrink-0"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
                   {/* Links */}
-                  <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <a
                       href={project.link}
                       target="_blank"
