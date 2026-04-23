@@ -230,9 +230,17 @@ const Projects = () => {
                         Tech Stack
                       </span>
                       {project.tech.length > 3 && (
-                        <span className="text-[10px] text-gray-400/80 tracking-wide animate-pulse">
-                          Scroll ➔
-                        </span>
+                        <button
+                          onClick={(e) => {
+                            const container = e.currentTarget.parentElement.nextElementSibling.querySelector('.overflow-x-auto');
+                            if (container) {
+                              container.scrollBy({ left: 150, behavior: 'smooth' });
+                            }
+                          }}
+                          className="flex items-center gap-1 text-[10px] font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 hover:text-gray-900 px-2.5 py-0.5 rounded-full transition-all border border-gray-200"
+                        >
+                          Scroll <span className="animate-pulse">➔</span>
+                        </button>
                       )}
                     </div>
                     <div className="relative">
