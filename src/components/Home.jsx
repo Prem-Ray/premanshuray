@@ -28,7 +28,7 @@ const Home = () => {
 
       {/* Subtitle */}
       <p className="text-lg sm:text-2xl text-gray-300 mt-4 animate-fadeIn">
-        Front‑End Developer & Software Engineer
+        Software Engineer
       </p>
 
       {/* CTA Button */}

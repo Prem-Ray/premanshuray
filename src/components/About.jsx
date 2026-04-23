@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 
 const About = () => {
   const [typewriterText, setTypewriterText] = useState("");
-  const fullText =
-    "Graduated in 2025 from St. Thomas' College of Engineering & Technology with a degree in Electronics & Communication Engineering, I thrive on solving real-world problems through innovation and hands-on execution. I have designed and delivered impactful projects and actively engaged in industry-level training to sharpen my practical understanding. I aim to contribute to forward-thinking teams, embrace new challenges, and continuously evolve through learning and collaboration.";
-
+  const fullText = 
+  "Software Engineer with a 2025 degree in Electronics & Communication Engineering from St. Thomas' College of Engineering & Technology. Contribute to designing, developing, and enhancing application features while supporting end-to-end delivery and release workflows using Git. Play an active role in identifying and resolving production issues to ensure system reliability. Passionate about building scalable systems, optimizing performance, and continuously improving through hands-on learning in collaborative environments.";
+  
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
@@ -84,7 +84,7 @@ const About = () => {
         />
         <h1 className="fade-in">Premanshu Ray</h1>
         <p className="text-lg sm:text-xl text-gray-400 mt-4 fade-in">
-          Electronics & Communication Engineer
+          Software Engineer
         </p>
         <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 mt-10">
           <a
