@@ -57,22 +57,40 @@ function Skills() {
   const [loadingProgress, setLoadingProgress] = useState(0);
 
   const skills = [
-    { name: "C++", level: 85, image: <img src="/cpp.png"  width={90} alt="C++" />, description: "System Programming & DSA" },
-    { name: "JavaScript", level: 90, image: <img src="/js.png" width={74} alt="JavaScript" />, description: "Modern ES6+ & DOM Manipulation" },
-    { name: "React", level: 88, image: <img src="/react.png" width={74} alt="React" />, description: "Hooks, Context & Component Design" },
-    { name: "HTML", level: 92, image: <img src="/html.png" width={74} alt="HTML" />, description: "Website Design" },
-    { name: "CSS", level: 90, image: <img src="/css.png" width={74} alt="CSS" />, description: "Responsive Design & Animations" },
-    { name: "Tailwind CSS", level: 87, image: <img src="/tailwind.png" width={74} alt="Tailwind CSS" />, description: "Utility-First CSS Framework" },
-    { name: "OOPs", level: 84, image: <img src="/oops.png" width={74} alt="OOPs" />, description: "Object-Oriented Programming" },
-    { name: "SQL", level: 82, image: <img src="/sql.png" width={104} alt="SQL" />, description: "Database Design & Queries" },
-    { name: "Computer Network", level: 78, image: <img src="/network.png" width={74} alt="Computer Network" />, description: "Networking & Security" },
-    { name: "Prompt Engineering", level: 89, image: <img src="/prompt.png" width={74} alt="Prompt Engineering" />, description: "AI Optimization & Tuning" }
-  ];
+  // Languages
+  { name: "C++", level: 85, image: <img src="/cpp.png" width={90} alt="C++" />, description: "System programming, data structures, and algorithms" },
+  { name: "JavaScript", level: 90, image: <img src="/js.png" width={74} alt="JavaScript" />, description: "Modern ES6+, DOM manipulation, and asynchronous programming" },
+  { name: "Kotlin", level: 89, image: <img src="/kotlin.jpg" width={74} alt="Kotlin" />, description: "Android development and modern JVM language features" },
+
+  // Frontend frameworks & libraries
+  { name: "React", level: 88, image: <img src="/react.png" width={74} alt="React" />, description: "React hooks, context, and component‑based UI design" },
+  { name: "Material-UI", level: 89, image: <img src="/mui.png" width={74} alt="Material-UI" />, description: "Component library for React with Material Design" },
+  { name: "HTML", level: 92, image: <img src="/html.png" width={74} alt="HTML" />, description: "Semantic markup and website structure" },
+  { name: "CSS", level: 90, image: <img src="/css.png" width={74} alt="CSS" />, description: "Responsive layouts, styling, and animations" },
+  { name: "Tailwind CSS", level: 87, image: <img src="/tailwind.png" width={74} alt="Tailwind CSS" />, description: "Utility‑first CSS framework for rapid UI development" },
+
+  // Backend & APIs
+  { name: "REST API", level: 75, image: <img src="/restapi.png" width={74} alt="REST API" />, description: "Design, consume, and test RESTful web services" },
+  { name: "Spring Boot", level: 23, image: <img src="/springboot.png" width={74} alt="Spring Boot" />, description: "Java‑based backend services, REST APIs, and dependency injection" },
+
+  // Databases & systems
+  { name: "SQL", level: 82, image: <img src="/sql.png" width={104} alt="SQL" />, description: "Database design, normalization, and complex queries" },
+  { name: "Computer Network", level: 78, image: <img src="/network.png" width={74} alt="Computer Network" />, description: "Networking fundamentals, protocols, and security basics" },
+
+  // Concepts & practices
+  { name: "DSA", level: 54, image: <img src="/dsa.avif" width={54} alt="dsa" />, description: "Core data structures and algorithms with problem‑solving and time‑complexity analysis" },
+  { name: "OOPs", level: 84, image: <img src="/oops.png" width={74} alt="OOPs" />, description: "Object‑oriented programming principles and design patterns" },
+
+  // Tools & collaboration
+  { name: "Git", level: 89, image: <img src="/gitLogo.png" width={74} alt="Git" />, description: "Version control, branching, and merge workflows" },
+  { name: "GitHub", level: 89, image: <img src="/github.png" width={74} alt="GitHub" />, description: "Repository hosting, collaboration, and CI workflows" },
+  { name: "Prompt Engineering", level: 89, image: <img src="/prompt.png" width={74} alt="Prompt Engineering" />, description: "Designing and optimizing prompts for AI models" },
+];
 
   // Simulated loading bar
   useEffect(() => {
     if (loadingProgress < 100) {
-      const timer = setTimeout(() => setLoadingProgress((prev) => prev + 2), 40);
+      const timer = setTimeout(() => setLoadingProgress((prev) => prev + 1), 7);
       return () => clearTimeout(timer);
     }
   }, [loadingProgress]);
